@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body {
+    margin: 0;
+    background-color: lightgray;
+    font-family: 'Roboto', sans-serif;
+    color: blue
+  }
+  
+  #my-canvas {
+    background-color: #EBECEE;
+  }
+  
+  #start-btn{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+  }
+
+  #restart-btn {
+    background-color: green;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+  
+  #my-canvas{
+    display: block;
+  }
+  #gameover-screen {
+    display: block; /* esto para ocultar pantallas */ 
+  }
+
+  #splash-screen{
+    display: block;
+  }
