@@ -89,6 +89,8 @@ class Game {
       ) {
         this.score += this.hairScore;
         this.scissorsArray.shift();
+        const scissorAudio = new Audio("audio/scissors.wav");
+        scissorAudio.play();
       }
     });
   };
@@ -102,7 +104,10 @@ class Game {
         eachRazor.h + eachRazor.y > this.customer.y
       ) {
         this.score += this.beardScore;
+        //! this.customer.shaveBeard();
         this.razorArray.shift();
+        const razorAudio = new Audio("audio/razor.wav");
+        razorAudio.play();
       }
     });
   };
@@ -116,7 +121,11 @@ class Game {
         eachBomb.h + eachBomb.y > this.customer.y
       ) {
         this.bombArray.shift();
-        this.gameOver();
+        this.lives -= 1;
+        console.log(this.lives)
+        const bombAudio = new Audio("audio/blast.ogg");
+        bombAudio.play();
+
       }
     });
   };
@@ -142,7 +151,7 @@ class Game {
   }
 
   livesCounter = () => {
-    if (lives <= 0) {
+    if (this.lives <= 0) {
         this.gameOver();
     }
   }
@@ -192,7 +201,7 @@ class Game {
     this.removeBombs();
 
     // Lives system
-    //this.livesCounter();
+    this.livesCounter();
 
     //* 3. Drawing of the elements
     this.drawBackground();

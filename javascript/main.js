@@ -6,6 +6,9 @@ const gameOverScreenDOM = document.querySelector("#gameover-screen"); // Game ov
 const canvas = document.querySelector("#my-canvas"); // Canvas
 const ctx = canvas.getContext("2d"); // Canvas tools
 
+const audio = document.querySelector("bcg-song");
+audio.volume = 0.1;
+
 const startBtnDOM = document.querySelector("#start-btn"); // Start button
 const restartBtnDOM = document.querySelector("#restart-btn"); // Restart button
 const instructionsBtnDOM = document.querySelector("#instructions-btn"); // Go to instructions button
@@ -31,7 +34,7 @@ const startGame = () => {
   instructionsScreenDOM.style.display = "none"; // Hides info
   canvas.style.display = "block"; // Shows canvas
 
-  // 2. Create game elements
+  // 2. Create game element
   gameObj = new Game();
 
   // 3. Start the recursion
