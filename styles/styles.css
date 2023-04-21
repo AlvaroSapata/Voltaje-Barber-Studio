@@ -1,49 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 body {
-    margin: 0;
-    background-color: lightgray;
-    font-family: 'Roboto', sans-serif;
-    color: blue
-  }
-  
-  #my-canvas {
-    background-color: #EBECEE;
-  }
-  
-  #start-btn{
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    color: black;
-    padding: 20px;
-    font-size: 20px;
-    margin-top: 40px;
-    border-radius: 10px;
-  }
+  margin: 0;
+  background-color: lightgray;
+  font-family: "Roboto", sans-serif;
+  color: blue;
+}
 
-  #restart-btn {
-    background-color: green;
-    color: white;
-    padding: 20px;
-    font-size: 20px;
-    margin-top: 40px;
-    border-radius: 10px;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
-  }
-  
-  #my-canvas{
-    display: block;
-  }
-  #gameover-screen {
-    display: block; /* esto para ocultar pantallas */ 
-  }
+#my-canvas {
+  background-color: #ebecee;
+}
 
-  #splash-screen{
-    display: block;
-  }
+#instructions-btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: black;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+#start-btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: black;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+#restart-btn {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+#splash-screen {
+  display: none; /* esto para ocultar pantallas */
+}
+
+#instructions-screen {
+  display: block; /* esto para ocultar pantallas */
+}
+
+#my-canvas {
+  display: block; /* esto para ocultar pantallas */
+}
+#gameover-screen {
+  display: none; /* esto para ocultar pantallas */
+}
