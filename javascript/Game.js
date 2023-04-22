@@ -41,6 +41,14 @@ class Game {
   randomObjectSelector = () => {
     // todo: selects a random object to deploy
     let randomObject = Math.random() * 3;
+
+    if (randomObject <= 1) {
+      this.spawnScissors();
+    } else if (randomObject <= 2 && randomObject > 1) {
+      this.spawnRazors();
+    } else {
+      this.spawnBombs();
+    }
   };
 
   spawnScissors = () => {
@@ -123,7 +131,7 @@ class Game {
         this.bombArray.shift();
         this.lives -= 1;
         console.log(this.lives)
-        const bombAudio = new Audio("audio/blast.ogg");
+        const bombAudio = new Audio("audio/bang.wav");
         bombAudio.play();
 
       }
@@ -172,23 +180,21 @@ class Game {
     this.clearCanvas();
 
     //* 2. Actions and movements of the elements
-
+    //this.randomObjectSelector();
     this.spawnScissors();
     this.spawnRazors();
     this.spawnBombs();
+    
     // Gravity
     this.scissorsArray.forEach((eachScissor) => {
       eachScissor.gravity();
     });
-    //this.scissor.gravity();
     this.razorArray.forEach((eachRazor) => {
       eachRazor.gravity();
     });
-    //this.razor.gravity();
     this.bombArray.forEach((eachBomb) => {
       eachBomb.gravity();
     });
-    //this.bomb.gravity();
 
     // Check collisions
     this.checkColisionCustomerScissor();

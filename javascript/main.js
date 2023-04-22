@@ -7,7 +7,7 @@ const canvas = document.querySelector("#my-canvas"); // Canvas
 const ctx = canvas.getContext("2d"); // Canvas tools
 
 const audio = document.querySelector("bcg-song");
-audio.volume = 0.1;
+//audio.volume = 0.1;
 
 const startBtnDOM = document.querySelector("#start-btn"); // Start button
 const restartBtnDOM = document.querySelector("#restart-btn"); // Restart button
@@ -25,7 +25,7 @@ const goToInstructions = () => {
   console.log("Test go to info");
   // 1. Swap screens
   splashScreenDOM.style.display = "none"; // Hides splash
-  instructionsScreenDOM.style.display = "block"; // Shows info
+  instructionsScreenDOM.style.display = "flex"; // Shows info
 };
 
 const startGame = () => {

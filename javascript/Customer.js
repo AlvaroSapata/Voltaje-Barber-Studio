@@ -7,7 +7,7 @@ class Customer {
     this.y = 480; // Y position
     this.w = 80; // Width
     this.h = 100; // Height referenced to height
-    this.movementSpeed = 10; // Movement speed of the customer
+    this.movementSpeed = 30; // Movement speed of the customer
 
     // beard
     this.beardCounter = 0;
@@ -79,13 +79,13 @@ class Customer {
 
     //ctx.drawImage(this.imgBeard1, this.xBeard1, this.yBeard1, this.wBeard1, this.hBeard1);
     //ctx.drawImage(this.imgBeard2, this.xBeard2, this.yBeard2, this.wBeard2, this.hBeard2);
-    //ctx.drawImage(this.imgBeard3, this.xBeard3, this.yBeard3, this.wBeard3, this.hBeard3);
-    ctx.drawImage(this.imgBeard4, this.xBeard4, this.yBeard4, this.wBeard4, this.hBeard4);
+    ctx.drawImage(this.imgBeard3, this.xBeard3, this.yBeard3, this.wBeard3, this.hBeard3);
+    //ctx.drawImage(this.imgBeard4, this.xBeard4, this.yBeard4, this.wBeard4, this.hBeard4);
 
-    ctx.drawImage(this.imgHair1, this.xHair1, this.yHair1, this.wHair1, this.hHair1);
+    //ctx.drawImage(this.imgHair1, this.xHair1, this.yHair1, this.wHair1, this.hHair1);
     //ctx.drawImage(this.imgHair2, this.xHair2, this.yHair2, this.wHair2, this.hHair2);
-    //ctx.drawImage(this.imgHair3, this.xHair3, this.yHair3, this.wHair3, this.hHair3);
-    //ctx.drawImage(this.imgHair4, this.xHair4, this.yHair4, this.wHair4, this.hHair4);
+    ctx.drawImage(this.imgHair3, this.xHair3, this.yHair3, this.wHair3, this.hHair3);
+    //ctx.drawImage(      this.imgHair4,      this.xHair4,      this.yHair4,      this.wHair4,      this.hHair4);
   };
   moveLeft = () => {
     if (this.x > 10) {
@@ -125,6 +125,16 @@ class Customer {
           this.wBeard2,
           this.hBeard2
         );
+
+        draw = () => {
+          ctx.drawImage(
+            this.imgBeard1,
+            this.xBeard1,
+            this.yBeard1,
+            this.wBeard1,
+            this.hBeard1
+          );
+        };
       } else if (this.beardCounter === 2) {
         ctx.drawImage(
           this.imgBeard3,
@@ -151,15 +161,16 @@ class Customer {
         );
       }
       this.beardCounter++;
+      console.log(this.beardCounter)
 
       //todo: si esta mas de X que empiece a quitar vidas
     }, 1000);
   };
 
   shaveBeard = () => {
-    if ( this.beardCounter > 0) {
-        this.beardCounter -= 1;
-        console.log(this.beardCounter)
+    if (this.beardCounter > 0) {
+      this.beardCounter -= 1;
+      console.log(this.beardCounter);
     }
-  }
+  };
 }
