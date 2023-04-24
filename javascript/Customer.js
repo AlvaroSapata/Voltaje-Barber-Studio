@@ -9,7 +9,8 @@ class Customer {
     this.h = 100; // Height
     this.movementSpeed = 30; // Movement speed of the customer
     this.growSpeed = 2000; // Growing speed
-    this.maxGrowLength = 7; // Maximun to start losing lives
+    this.maxGrowLength = 5; // Maximun to start losing lives
+    //this.isMoving = false;
 
     // Beards
     this.beardCounter = 0;
@@ -55,8 +56,8 @@ class Customer {
     this.imgHair2 = new Image();
     this.imgHair2.src = "images/hair2.png";
     this.xHair2 = 448; // X position
-    this.yHair2 = 472; // Y position
-    this.wHair2 = 110; // Width
+    this.yHair2 = 475; // Y position
+    this.wHair2 = 100; // Width
     this.hHair2 = 90; // Height
 
     this.imgHair3 = new Image();
@@ -159,7 +160,7 @@ class Customer {
     }
   };
   moveRight = () => {
-    if (this.x < canvas.width - 100) {
+    if (this.x < canvas.width - 110) {
       this.x += this.movementSpeed;
       this.xBeard1 += this.movementSpeed;
       this.xBeard2 += this.movementSpeed;

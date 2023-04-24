@@ -35,6 +35,7 @@ class Game {
   // METHODS OF THE GAME
   drawBackground = () => {
     ctx.drawImage(this.background, 0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0,canvas.height -4,canvas.width,4)
   };
 
   clearCanvas = () => {
@@ -105,6 +106,8 @@ class Game {
         this.scissorsCounter += 1;
         this.customer.cutHair();
         this.canLoseLife = true;
+        scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
+        scoreDOM.innerText = `Score: ${this.score}`;
       }
     });
   };
@@ -124,6 +127,8 @@ class Game {
         this.razorsCounter += 1;
         this.customer.shaveBeard();
         this.canLoseLife = true;
+        razorsScoreDOM.innerText = `${this.razorsCounter}`;
+        scoreDOM.innerText = `Score: ${this.score}`;
       }
     });
   };
@@ -142,6 +147,7 @@ class Game {
         const bombAudio = new Audio("audio/bang.wav");
         bombAudio.volume = 0.1;
         bombAudio.play();
+        this.livesCounter();
       }
     });
   };
@@ -169,36 +175,37 @@ class Game {
   livesCounter = () => {
     if (this.lives <= 0) {
       this.gameOver();
+      finalScoreDOM.innerText = `You Scored ${this.score} points.`
     }
-    /*  if (this.lives === 3){
-      livesImageDOM.innerHTML = `${<img src="images/heart.png" alt="full"/>}`
-    } */
-/*     if (this.lives === 3){
-      life3ImageDOM.src = 'images/heart.png'
-      life2ImageDOM.src = 'images/heart.png'
-      life1ImageDOM.src = 'images/heart.png'
-    }
-    else if (this.lives === 2.5){
-      life3ImageDOM.src = 'images/half-hear.png'
-      life2ImageDOM.src = 'images/heart.png'
-      life1ImageDOM.src = 'images/heart.png'
+    if (this.lives === 3) {
+      life3ImageDOM.src = "images/heart.png";
+      life2ImageDOM.src = "images/heart.png";
+      life1ImageDOM.src = "images/heart.png";
+    } else if (this.lives === 2.5) {
+      life3ImageDOM.src = "images/half-hear.png";
+      life2ImageDOM.src = "images/heart.png";
+      life1ImageDOM.src = "images/heart.png";
     } else if (this.lives === 2) {
-      life3ImageDOM.src = 'images/empty-heart.png'
-      life2ImageDOM.src = 'images/heart.png'
-      life1ImageDOM.src = 'images/heart.png'
+      life3ImageDOM.src = "images/empty-heart.png";
+      life2ImageDOM.src = "images/heart.png";
+      life1ImageDOM.src = "images/heart.png";
     } else if (this.lives === 1.5) {
-      life3ImageDOM.src = 'images/empty-heart.png'
-      life2ImageDOM.src = 'images/half-hear.png'
-      life1ImageDOM.src = 'images/heart.png'
-    }else if (this.lives === 1) {
-      life3ImageDOM.src = 'images/empty-heart.png'
-      life2ImageDOM.src = 'images/empty-heart.png'
-      life1ImageDOM.src = 'images/heart.png'
+      life3ImageDOM.src = "images/empty-heart.png";
+      life2ImageDOM.src = "images/half-hear.png";
+      life1ImageDOM.src = "images/heart.png";
+    } else if (this.lives === 1) {
+      life3ImageDOM.src = "images/empty-heart.png";
+      life2ImageDOM.src = "images/empty-heart.png";
+      life1ImageDOM.src = "images/heart.png";
     } else if (this.lives === 0.5) {
-      life3ImageDOM.src = 'images/empty-heart.png'
-      life2ImageDOM.src = 'images/empty-heart.png'
-      life1ImageDOM.src = 'images/half-hear.png'
-    } */
+      life3ImageDOM.src = "images/empty-heart.png";
+      life2ImageDOM.src = "images/empty-heart.png";
+      life1ImageDOM.src = "images/half-hear.png";
+    } else {
+      life3ImageDOM.src = "images/empty-heart.png";
+      life2ImageDOM.src = "images/empty-heart.png";
+      life1ImageDOM.src = "images/empty-heart.png";
+    }
   };
 
   hairTooLong = () => {
@@ -210,7 +217,21 @@ class Game {
       this.lives -= 0.5;
       this.canLoseLife = false;
       console.log(this.lives);
+      this.livesCounter();
     }
+    if (this.customer.beardCounter >= 3) {
+      beardWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
+      <p>You Should Shave!</p>`;
+    } else {
+      beardWarningDOM.innerHTML = ``;
+    }
+    if (this.customer.hairCounter >= 3) {
+      hairWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
+      <p>You Should Cut Your Hair!</p>`;
+    } else {
+      hairWarningDOM.innerHTML = ``;
+    }
+
   };
 
   gameOver = () => {
@@ -219,6 +240,7 @@ class Game {
 
     // 2. Hide canvas
     canvas.style.display = "none";
+    scoresScreenDOM.style.display ="none"
 
     // 3. Show game over screen
     gameOverScreenDOM.style.display = "flex";
@@ -256,7 +278,6 @@ class Game {
     this.removeBombs();
 
     // Lives system
-    this.livesCounter();
     this.hairTooLong();
 
     //* 3. Drawing of the elements

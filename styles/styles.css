@@ -4,7 +4,7 @@ body {
   margin: 0;
   background-color: #e9eaec;
   font-family: "Roboto", sans-serif;
-  color: blue;
+  color: rgb(0, 0, 0);
 }
 
 #img-bcg {
@@ -97,7 +97,10 @@ body {
   /* justify-content: center; */
 }
 
-/*! #canvas-div{  display: none; /* esto para ocultar pantallas */} */
+#canvas-div{
+  display: none;
+  justify-content: center;
+ }
 
 #gameover-screen {
   display: none; /* esto para ocultar pantallas */
@@ -108,20 +111,24 @@ body {
 
 #gameover-screen p {
   position: relative;
-  top: -500px;
-  font-size: 25px;
+  top: -570px;
+  font-size: 30px;
 }
 
 #gameover-screen .thanks {
 color: black;
-font-size: 25px;
+font-size: 35px;
 font-weight: bold;
 }
 
 #gameover-screen .btn {
   position: relative;
-  top: 150px;
+  top: 100px;
   font-size: 25px;
+}
+
+#gameover-screen .final-score{
+  font-size: 20px;
 }
 
 #instructions {
@@ -186,18 +193,31 @@ font-weight: bold;
 
 #score-screens{
   color: black;
-  display: flex;
+  display: none;
   flex-direction: row;
   margin-top: 10px;
-  justify-content: space-between;
+  justify-content:center
   
 }
 
-#score-screens .warnings{
+#score-screens .warning-shave {
   color: black;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+/*   justify-content: space-evenly; */
+  font-size: 20px;
+  align-items: center;
+  font-weight: bold;
+}
+
+#score-screens .warning-cut {
+  color: black;
+  display: flex;
+  flex-direction: row;
+/*   justify-content: space-evenly; */
+  font-size: 20px;
+  align-items: center;
+  font-weight: bold;
 }
 
 #score-screens .scores{
@@ -205,7 +225,10 @@ font-weight: bold;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-
+  font-size: 20px;
+  align-items: center;
+  font-weight: bold;
+  gap: 10px;
 }
 
 #score-screens img{

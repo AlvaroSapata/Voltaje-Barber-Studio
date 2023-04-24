@@ -3,6 +3,7 @@
 const splashScreenDOM = document.querySelector("#splash-screen"); // Splash screen
 const instructionsScreenDOM = document.querySelector("#instructions-screen"); // Instructions
 const gameOverScreenDOM = document.querySelector("#gameover-screen"); // Game over screen
+const scoresScreenDOM = document.querySelector("#score-screens")
 const canvas = document.querySelector("#my-canvas"); // Canvas
 const ctx = canvas.getContext("2d"); // Canvas tools
 
@@ -13,15 +14,17 @@ const startBtnDOM = document.querySelector("#start-btn"); // Start button
 const restartBtnDOM = document.querySelector("#restart-btn"); // Restart button
 const instructionsBtnDOM = document.querySelector("#instructions-btn"); // Go to instructions button
 
-const scissorsScoreDOM = document.querySelector("scissors-counter")
-const razorsScoreDOM = document.querySelector("razors-counter")
-const livesImageDOM = document.querySelector("lives-imgs")
-const life1ImageDOM = document.querySelector("life-1")
-const life2ImageDOM = document.querySelector("life-2")
-const life3ImageDOM = document.querySelector("life-3")
+const scissorsScoreDOM = document.querySelector(".scissors-counter")
+const razorsScoreDOM = document.querySelector(".razors-counter")
 
-//scissorsScoreDOM.innerText = this.beardCounter
-//razorsScoreDOM.innerHTML
+const life1ImageDOM = document.querySelector(".life-1")
+const life2ImageDOM = document.querySelector(".life-2")
+const life3ImageDOM = document.querySelector(".life-3")
+
+const scoreDOM = document.querySelector(".score-points")
+const finalScoreDOM = document.querySelector(".final-score")
+const hairWarningDOM = document.querySelector(".warning-cut")
+const beardWarningDOM = document.querySelector(".warning-shave")
 
 const gravitySpeed = 3;
 
@@ -36,13 +39,15 @@ const goToInstructions = () => {
   // 1. Swap screens
   splashScreenDOM.style.display = "none"; // Hides splash
   instructionsScreenDOM.style.display = "flex"; // Shows info
+  scoresScreenDOM.style.display ="none"
 };
 
 const startGame = () => {
   console.log("Test start");
   // 1. Swap screens
   instructionsScreenDOM.style.display = "none"; // Hides info
-  canvas.style.display = "block"; // Shows canvas
+  canvas.style.display = "flex"; // Shows canvas
+  scoresScreenDOM.style.display ="flex" // Show scores
   gameOverScreenDOM.style.display = "none"
 
   // 2. Create game element
@@ -59,7 +64,10 @@ const restartGame = () => {
   console.log("Test Restart");
   gameOverScreenDOM.style.display = "none";
   canvas.style.display = "block";
+  scoresScreenDOM.style.display ="flex" // Show scores
   gameObj = new Game();
+  gameObj.customer.growBeard();
+  gameObj.customer.growHair();
   gameObj.gameLoop();
 };
 

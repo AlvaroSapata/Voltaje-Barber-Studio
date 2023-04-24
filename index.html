@@ -90,24 +90,27 @@
     <div id="#canvas-div">
       <canvas id="my-canvas" width="1000" height="600"></canvas>
       <div id="score-screens">
-        <div class="warnings">
-          <img src="images/warning.png" alt="warning icon" />
-          <p>You Should Shave!</p>
-          <img src="images/warning.png" alt="warning icon" />
-          <p>You Should Cut Your Hair!</p>
+        <div class="warning-shave">
+          <img src="" alt="" />
+          <p></p> 
+        </div>
+        <div class="warning-cut">
+        <img src="" alt="" />
+          <p></p> 
         </div>
         <div class="scores">
           <img src="images/ScissorsDown.png" alt="icon scissors" />
-          <p>x </p>
-          <p class="scissors-counter"></p>
+          <p> x </p>
+          <p class="scissors-counter"> 0 </p>
           <img src="images/razor.png" alt="icon razor" />
-          <p class="razors-counter">x 0</p>
+          <p> x </p>
+          <p class="razors-counter"> 0 </p>
           <div class="lives-imgs"><!-- aqui las vidas -->
           <img class="life-1" src="images/heart.png" alt="full">
           <img class="life-2" src="images/heart.png" alt="full">
           <img class="life-3" src="images/heart.png" alt="full">
           </div>
-          <p>Score: 0</p>
+          <p class="score-points">Score: 0</p>
         </div>
       </div>
     </div>
@@ -121,6 +124,7 @@
         alt="logo"
       />
       <p class="thanks">Thanks for playing!</p>
+      <p class="final-score">You Scored 0 points.</p>
       <button id="restart-btn"><p class="btn">Play Again!</p></button>
     </div>
   </div>
