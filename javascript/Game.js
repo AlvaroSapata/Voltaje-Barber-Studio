@@ -23,10 +23,13 @@ class Game {
     this.hairScore = 2;
     this.beardScore = 1;
     this.lives = 3;
+    this.scissorsCounter = 0;
+    this.razorsCounter = 0;
 
     // Checks
     this.isGameOn = true;
-    this.randomLimit = 900; // cambiar
+    this.randomLimit = 900;
+    this.canLoseLife = true;
   }
 
   // METHODS OF THE GAME
@@ -99,6 +102,9 @@ class Game {
         this.scissorsArray.shift();
         const scissorAudio = new Audio("audio/scissors.wav");
         scissorAudio.play();
+        this.scissorsCounter += 1;
+        this.customer.cutHair();
+        this.canLoseLife = true;
       }
     });
   };
@@ -112,10 +118,12 @@ class Game {
         eachRazor.h + eachRazor.y > this.customer.y
       ) {
         this.score += this.beardScore;
-        //! this.customer.shaveBeard();
         this.razorArray.shift();
         const razorAudio = new Audio("audio/razor.wav");
         razorAudio.play();
+        this.razorsCounter += 1;
+        this.customer.shaveBeard();
+        this.canLoseLife = true;
       }
     });
   };
@@ -130,10 +138,10 @@ class Game {
       ) {
         this.bombArray.shift();
         this.lives -= 1;
-        console.log(this.lives)
+        console.log(this.lives);
         const bombAudio = new Audio("audio/bang.wav");
+        bombAudio.volume = 0.1;
         bombAudio.play();
-
       }
     });
   };
@@ -154,15 +162,56 @@ class Game {
   };
 
   drawScore = () => {
-    ctx.font = "50px serif"
-    ctx.fillText (Math.floor(this.score), 480, 40)
-  }
+    ctx.font = "50px serif";
+    ctx.fillText(Math.floor(this.score), 480, 40);
+  };
 
   livesCounter = () => {
     if (this.lives <= 0) {
-        this.gameOver();
+      this.gameOver();
     }
-  }
+    /*  if (this.lives === 3){
+      livesImageDOM.innerHTML = `${<img src="images/heart.png" alt="full"/>}`
+    } */
+/*     if (this.lives === 3){
+      life3ImageDOM.src = 'images/heart.png'
+      life2ImageDOM.src = 'images/heart.png'
+      life1ImageDOM.src = 'images/heart.png'
+    }
+    else if (this.lives === 2.5){
+      life3ImageDOM.src = 'images/half-hear.png'
+      life2ImageDOM.src = 'images/heart.png'
+      life1ImageDOM.src = 'images/heart.png'
+    } else if (this.lives === 2) {
+      life3ImageDOM.src = 'images/empty-heart.png'
+      life2ImageDOM.src = 'images/heart.png'
+      life1ImageDOM.src = 'images/heart.png'
+    } else if (this.lives === 1.5) {
+      life3ImageDOM.src = 'images/empty-heart.png'
+      life2ImageDOM.src = 'images/half-hear.png'
+      life1ImageDOM.src = 'images/heart.png'
+    }else if (this.lives === 1) {
+      life3ImageDOM.src = 'images/empty-heart.png'
+      life2ImageDOM.src = 'images/empty-heart.png'
+      life1ImageDOM.src = 'images/heart.png'
+    } else if (this.lives === 0.5) {
+      life3ImageDOM.src = 'images/empty-heart.png'
+      life2ImageDOM.src = 'images/empty-heart.png'
+      life1ImageDOM.src = 'images/half-hear.png'
+    } */
+  };
+
+  hairTooLong = () => {
+    if (
+      this.canLoseLife === true &&
+      (this.customer.beardCounter === this.customer.maxGrowLength ||
+        this.customer.hairCounter === this.customer.maxGrowLength)
+    ) {
+      this.lives -= 0.5;
+      this.canLoseLife = false;
+      console.log(this.lives);
+    }
+  };
 
   gameOver = () => {
     // 1. Stop the game
@@ -172,7 +221,7 @@ class Game {
     canvas.style.display = "none";
 
     // 3. Show game over screen
-    gameOverScreenDOM.style.display = "block";
+    gameOverScreenDOM.style.display = "flex";
   };
 
   gameLoop = () => {
@@ -184,7 +233,7 @@ class Game {
     this.spawnScissors();
     this.spawnRazors();
     this.spawnBombs();
-    
+
     // Gravity
     this.scissorsArray.forEach((eachScissor) => {
       eachScissor.gravity();
@@ -208,6 +257,7 @@ class Game {
 
     // Lives system
     this.livesCounter();
+    this.hairTooLong();
 
     //* 3. Drawing of the elements
     this.drawBackground();
@@ -222,8 +272,6 @@ class Game {
     this.bombArray.forEach((eachBomb) => {
       eachBomb.draw();
     });
-
-    //todo: check this.customer.growBeard();
 
     this.drawScore();
 

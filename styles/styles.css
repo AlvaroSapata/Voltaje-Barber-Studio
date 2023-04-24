@@ -2,18 +2,24 @@
 
 body {
   margin: 0;
-  background-color: #E9EAEC;
+  background-color: #e9eaec;
   font-family: "Roboto", sans-serif;
   color: blue;
 }
 
-#img-bcg{
+#img-bcg {
   background-size: cover;
   height: 700px;
   width: 800px;
 }
 
-#img-info{
+#img-info {
+  background-size: cover;
+  height: 700px;
+  width: 800px;
+}
+
+#img-gameover {
   background-size: cover;
   height: 700px;
   width: 800px;
@@ -33,34 +39,37 @@ body {
   font-size: 20px;
   border-radius: 10px;
   background-color: transparent;
- border: none;
+  border: none;
 }
 
-#instructions-btn p{
+#instructions-btn p {
   position: relative;
   top: 200px;
-
 }
 
 #start-btn {
-  position: relative;
-  top: -110px;
+  position: absolute;
+  top: 110px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   color: black;
-  padding: 5px 60px;
+  padding: 345px 400px;
   font-size: 20px;
   border-radius: 10px;
   background-color: transparent;
 }
 
 #restart-btn {
-  background-color: green;
-  color: white;
-  padding: 20px;
+  position: relative;
+  top: -770px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: black;
+  padding: 300px 320px;
   font-size: 20px;
-  margin-top: 40px;
   border-radius: 10px;
+  background-color: transparent;
+  border: none;
 }
 
 .container {
@@ -72,41 +81,74 @@ body {
 }
 
 #splash-screen {
-  display: none; /* esto para ocultar pantallas */
+  display: flex; /* esto para ocultar pantallas */
   justify-content: center;
-
 }
 
 #instructions-screen {
-  display: flex; /* esto para ocultar pantallas */
+  display: none; /* esto para ocultar pantallas */
   justify-content: center;
   color: black;
-font-weight: bold;}
+  font-weight: bold;
+}
 
 #my-canvas {
   display: none; /* esto para ocultar pantallas */
+  /* justify-content: center; */
 }
+
+/*! #canvas-div{  display: none; /* esto para ocultar pantallas */} */
+
 #gameover-screen {
   display: none; /* esto para ocultar pantallas */
+  justify-content: center;
+  color: black;
+  font-weight: bold;
 }
 
-#instructions{
+#gameover-screen p {
   position: relative;
-  top: -750px;
+  top: -500px;
+  font-size: 25px;
 }
 
-.p1, .p2, .p3 {
+#gameover-screen .thanks {
+color: black;
+font-size: 25px;
+font-weight: bold;
+}
+
+#gameover-screen .btn {
+  position: relative;
+  top: 150px;
+  font-size: 25px;
+}
+
+#instructions {
+  position: relative;
+  top: -660px;
+}
+
+#instructions p {
+  position: relative;
+  text-align: center;
+  top: 0px;
+}
+
+.p1,
+.p2,
+.p3 {
   font-size: 20px;
   text-align: center;
 }
-.drawings{
+.drawings {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.card{
+.card {
   display: flex;
-  flex-direction: row;  
+  flex-direction: row;
   align-items: center;
 }
 
@@ -114,24 +156,24 @@ font-weight: bold;}
   font-size: 20px;
 }
 
-.card img{
+.card img {
   height: 40px;
 }
 
-.hearts{
+.hearts {
   display: flex;
   flex-direction: row;
-  justify-content:space-evenly ;
+  justify-content: space-evenly;
 }
 
-.hearts img{
+.hearts img {
   height: 40px;
 }
 
 .faces {
   display: flex;
   flex-direction: row;
-  justify-content:space-evenly ;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -140,4 +182,32 @@ font-weight: bold;}
 }
 .faces .arrow {
   height: 30px;
+}
+
+#score-screens{
+  color: black;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: space-between;
+  
+}
+
+#score-screens .warnings{
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#score-screens .scores{
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+#score-screens img{
+  height: 40px;
 }

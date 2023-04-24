@@ -8,68 +8,122 @@
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
-    <audio id="bcg-song"  controls="controls" loop> <!-- autoplay="autoplay" -->
-      <source src="audio/PurpleNoise.mp3" />     
-  </audio>
+    <audio id="bcg-song" controls="controls" loop volume="0.2" autoplay="autoplay">
+      <!-- autoplay="autoplay" -->
+      <source src="audio/PurpleNoise.mp3" />
+    </audio>
     <!-- SPLASH SCREEN -->
     <div id="splash-screen" class="container">
-      <img id="img-bcg" src="images/CanvasBackground.png" width="600" alt="logo" />
-      <!-- <img src="images/LogoBackground.png" width="600" alt="logo" /> -->
-      <button id="instructions-btn"><p>Click to see the Instructions!</p></button>
+      <img
+        id="img-bcg"
+        src="images/CanvasBackground.png"
+        width="600"
+        alt="logo"
+      />
+      <button id="instructions-btn">
+        <p>- Click to see the Instructions -</p>
+      </button>
     </div>
 
     <!-- INSTRUCTIONS SCREEN -->
     <div id="instructions-screen" class="container">
-      <img id="img-info" src="images/LogoBackground.png" width="600" alt="logo" />
-      <button id="start-btn"><p>Click to Start!</p></button>
+      <img
+        id="img-info"
+        src="images/LogoBackground.png"
+        width="600"
+        alt="logo"
+      />
+
       <div id="instructions">
-        <p class="p1">Your aim is to collect the max number of scissors and razors <br> while you avoid the bombs</p>
-        <br>
-        <p class="p2">Take scissors to cut your hair and razors to shave your beard</p>
-        <br>
+        <p class="p1">
+          - Your aim is to collect the max number of scissors and razors -
+          <br />
+          - while you avoid the bombs -
+        </p>
+        <br />
+        <p class="p2">
+          - Take scissors to cut your hair and razors to shave your beard -
+        </p>
+        <br />
         <div class="faces">
-          <img class="face" src="images/grown1.png" alt="">
-          <img  class="arrow" src="images/felcha-izda.png" alt="">
-          <img  class="face" src="images/grown2.png" alt="">
-          <img  class="arrow"src="images/felcha-izda.png" alt="">
-          <img  class="face" src="images/grown3.png" alt="">
-          <img class="arrow" src="images/felcha-izda.png" alt="">
-          <img  class="face" src="images/grown4.png" alt="">
+          <img class="face" src="images/grown1.png" alt="" />
+          <img class="arrow" src="images/felcha-izda.png" alt="" />
+          <img class="face" src="images/grown2.png" alt="" />
+          <img class="arrow" src="images/felcha-izda.png" alt="" />
+          <img class="face" src="images/grown3.png" alt="" />
+          <img class="arrow" src="images/felcha-izda.png" alt="" />
+          <img class="face" src="images/grown4.png" alt="" />
         </div>
-        <p class="p3">If you let your hair and beard grow too much you <br> will start loosing lives!</p>
-        <br>
+        <p class="p3">
+          - If you let your hair and beard grow too much you -<br />- will start
+          loosing lives! -
+        </p>
+        <br />
         <div class="hearts">
-          <img src="images/heart.png" alt="full">
-          <img src="images/half-hear.png" alt="half">
-          <img src="images/empty-heart.png" alt="empty">
+          <img src="images/heart.png" alt="full" />
+          <img src="images/half-hear.png" alt="half" />
+          <img src="images/empty-heart.png" alt="empty" />
         </div>
-        <br>
-        <br>
+        <br />
+        <br />
         <div class="drawings">
           <div class="card">
-            <img src="images/ScissorsDown.png" alt="Scissor">
-            <p>  + 2 points</p>
+            <img src="images/ScissorsDown.png" alt="Scissor" />
+            <p>+ 2 points</p>
           </div>
           <div class="card">
-            <img src="images/razor.png" alt="Razor">
-            <p>  + 1 points</p>
+            <img src="images/razor.png" alt="Razor" />
+            <p>+ 1 points</p>
           </div>
           <div class="card">
-            <img src="images/bomba.png" alt="Bomb">
-            <p>  - 1 live</p>
+            <img src="images/bomba.png" alt="Bomb" />
+            <p>- 1 life</p>
           </div>
         </div>
+        <br />
+        <p>- Click to start! -</p>
       </div>
+      <button id="start-btn"></button>
     </div>
 
     <!-- GAME SCREEN -->
-    <canvas id="my-canvas" width="1000" height="600"></canvas>
-
+    <div id="#canvas-div">
+      <canvas id="my-canvas" width="1000" height="600"></canvas>
+      <div id="score-screens">
+        <div class="warnings">
+          <img src="images/warning.png" alt="warning icon" />
+          <p>You Should Shave!</p>
+          <img src="images/warning.png" alt="warning icon" />
+          <p>You Should Cut Your Hair!</p>
+        </div>
+        <div class="scores">
+          <img src="images/ScissorsDown.png" alt="icon scissors" />
+          <p>x </p>
+          <p class="scissors-counter"></p>
+          <img src="images/razor.png" alt="icon razor" />
+          <p class="razors-counter">x 0</p>
+          <div class="lives-imgs"><!-- aqui las vidas -->
+          <img class="life-1" src="images/heart.png" alt="full">
+          <img class="life-2" src="images/heart.png" alt="full">
+          <img class="life-3" src="images/heart.png" alt="full">
+          </div>
+          <p>Score: 0</p>
+        </div>
+      </div>
+    </div>
+    
     <!-- GAME OVER SCREEN -->
     <div id="gameover-screen" class="container">
-      <img src="images/LogoBackground.png" width="600" alt="logo" />
-      <button id="restart-btn">Play Again!</button>
+      <img
+        id="img-gameover"
+        src="images/LogoBackground.png"
+        width="600"
+        alt="logo"
+      />
+      <p class="thanks">Thanks for playing!</p>
+      <button id="restart-btn"><p class="btn">Play Again!</p></button>
     </div>
+  </div>
 
     <script src="javascript/main.js"></script>
     <script src="javascript/Game.js"></script>
