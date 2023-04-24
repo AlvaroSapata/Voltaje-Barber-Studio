@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
-    <audio id="bcg-song" controls="controls" loop volume="0.2" autoplay="autoplay">
-      <!-- autoplay="autoplay" -->
-      <source src="audio/PurpleNoise.mp3" />
-    </audio>
+
     <!-- SPLASH SCREEN -->
     <div id="splash-screen" class="container">
       <img
@@ -123,11 +120,15 @@
         width="600"
         alt="logo"
       />
-      <p class="thanks">Thanks for playing!</p>
-      <p class="final-score">You Scored 0 points.</p>
-      <button id="restart-btn"><p class="btn">Play Again!</p></button>
+      <p class="thanks">- Thanks for playing! -</p>
+      <p class="final-score">- You Scored 0 points. -</p>
+      <button id="restart-btn"><p class="btn">- Play Again! -</p></button>
     </div>
-  </div>
+    <audio id="bcg-song" controls="controls" loop volume="0.2" autoplay="autoplay">
+      <!-- autoplay="autoplay" -->
+      <source src="audio/PurpleNoise.mp3" />
+    </audio>
+ 
 
     <script src="javascript/main.js"></script>
     <script src="javascript/Game.js"></script>

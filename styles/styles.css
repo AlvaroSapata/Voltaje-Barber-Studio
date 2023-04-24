@@ -49,23 +49,24 @@ body {
 
 #start-btn {
   position: absolute;
-  top: 110px;
+  top: 50px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   color: black;
-  padding: 345px 400px;
+  padding: 350px 400px;
   font-size: 20px;
   border-radius: 10px;
   background-color: transparent;
+  border: none;
 }
 
 #restart-btn {
   position: relative;
-  top: -770px;
+  top: -880px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   color: black;
-  padding: 300px 320px;
+  padding: 310px 365px;
   font-size: 20px;
   border-radius: 10px;
   background-color: transparent;
@@ -233,4 +234,10 @@ font-weight: bold;
 
 #score-screens img{
   height: 40px;
+}
+
+#bcg-song{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }

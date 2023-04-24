@@ -167,15 +167,10 @@ class Game {
     if (this.bombArray[0].y > canvas.height) this.bombArray.shift();
   };
 
-  drawScore = () => {
-    ctx.font = "50px serif";
-    ctx.fillText(Math.floor(this.score), 480, 40);
-  };
-
   livesCounter = () => {
     if (this.lives <= 0) {
       this.gameOver();
-      finalScoreDOM.innerText = `You Scored ${this.score} points.`
+      finalScoreDOM.innerText = `- You Scored ${this.score} points -`
     }
     if (this.lives === 3) {
       life3ImageDOM.src = "images/heart.png";
@@ -293,8 +288,6 @@ class Game {
     this.bombArray.forEach((eachBomb) => {
       eachBomb.draw();
     });
-
-    this.drawScore();
 
     //* 4. Recursion ( requestAnimationFrame )
     if (this.isGameOn === true) {
