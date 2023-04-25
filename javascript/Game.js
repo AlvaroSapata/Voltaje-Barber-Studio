@@ -107,6 +107,7 @@ class Game {
         this.score += this.hairScore;
         this.scissorsArray.shift();
         const scissorAudio = new Audio("audio/scissors.wav");
+        scissorAudio.volume = 0.8;
         scissorAudio.play();
         this.scissorsCounter += 1;
         this.customer.cutHair();
@@ -128,6 +129,7 @@ class Game {
         this.score += this.beardScore;
         this.razorArray.shift();
         const razorAudio = new Audio("audio/razor.wav");
+        razorAudio.volume=0.6;
         razorAudio.play();
         this.razorsCounter += 1;
         this.customer.shaveBeard();
@@ -149,9 +151,11 @@ class Game {
         this.bombArray.shift();
         this.lives -= 1;
         const bombAudio = new Audio("audio/bang.wav");
-        bombAudio.volume = 0.1;
+        bombAudio.volume = 0.04;
         bombAudio.play();
         this.livesCounter();
+        const ouchAudio = new Audio("audio/ouch.wav");
+        ouchAudio.play();
       }
     });
   };
@@ -225,21 +229,17 @@ class Game {
       this.canLoseLifeHair = false;
       this.canLoseLifeBeard = false;
       this.livesCounter();
+      const ouchAudio2 = new Audio ("audio/ouch.wav");
+      ouchAudio2.play();
     }
     if (this.customer.beardCounter >= 3) {
-      /*       beardWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
-      <p>You Should Shave!</p>`; */
       beardWarningDOM.style.opacity = 1;
     } else {
-      /* beardWarningDOM.innerHTML = ``; */
       beardWarningDOM.style.opacity = 0;
     }
     if (this.customer.hairCounter >= 3) {
-      /*       hairWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
-      <p>You Should Cut Your Hair!</p>`; */
       hairWarningDOM.style.opacity = 1;
     } else {
-      /*       hairWarningDOM.innerHTML = ``; */
       hairWarningDOM.style.opacity = 0;
     }
   };

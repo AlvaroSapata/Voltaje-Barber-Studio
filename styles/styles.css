@@ -7,13 +7,8 @@ body {
   color: rgb(0, 0, 0);
   background-image: url("images/LogoBackground.png");
   background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-body .audio {
-  position: relative;
-  top: 500;
+  background-position: center;
+  background-repeat: repeat;
 }
 
 #img-bcg {
@@ -92,13 +87,12 @@ body .audio {
   align-items: center;
   margin: 0px;
   position: relative;
-  top: -45px;
+  top: 10px;
 }
 
 #splash-screen {
   display: flex; /* esto para ocultar pantallas */
   justify-content: center;
-  
 }
 
 #instructions-screen {
@@ -109,11 +103,11 @@ body .audio {
 }
 
 /* #my-canvas {display: none; /* esto para ocultar pantallas */
-/* 
+
 #canvas-div{
   display: none;
-  justify-content: center;
- } */
+
+ } 
 
 #gameover-screen {
   display: none; /* esto para ocultar pantallas */
@@ -129,9 +123,9 @@ body .audio {
 }
 
 #gameover-screen .thanks {
-color: black;
-font-size: 35px;
-font-weight: bold;
+  color: black;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 #gameover-screen .btn {
@@ -140,7 +134,7 @@ font-weight: bold;
   font-size: 25px;
 }
 
-#gameover-screen .final-score{
+#gameover-screen .final-score {
   font-size: 20px;
 }
 
@@ -204,29 +198,28 @@ font-weight: bold;
   height: 30px;
 }
 
-#score-screens{
+#score-screens {
   color: black;
   display: none;
   flex-direction: row;
   margin-top: 0px;
-  padding: 0px 17px ;
+  padding: 10px 0px ;
   justify-content: flex-end;
   /* justify-content:space-around */
   font-size: 20px;
-/*   border-top: 0px;
-  border-bottom: 4px;
-  border-left: 4px;
-  border-right: 4px;
+  border-top: 0px;
+  border-bottom: 3px;
+  border-left: 0px;
+  border-right: 0px;
   border-style: solid;
-  border-color: black; */
-
+  border-color: black;
 }
 
-#score-screens .life-3{
+#score-screens .life-3 {
   margin-right: 10px;
 }
 
-#score-screens .cut-icon{
+#score-screens .cut-icon {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -235,13 +228,14 @@ font-weight: bold;
   margin-left: 30px;
 }
 
-#score-screens .shave-icon{
+#score-screens .shave-icon {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   margin-right: 30px;
   margin-left: 40px;
+  border-top: 0px;
 }
 
 .warning-shave {
@@ -266,7 +260,7 @@ font-weight: bold;
   opacity: 0;
 }
 
-#score-screens .scores{
+#score-screens .scores {
   color: black;
   display: flex;
   flex-direction: row;
@@ -277,17 +271,15 @@ font-weight: bold;
   gap: 10px;
 }
 
-#score-screens img{
+#score-screens img {
   height: 40px;
 }
 
-/* #bcg-song{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  position: relative;
-  top: -100px;
-  left: 4px;
-  width: 250px;
-} */
+#bcg-song {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 240px;
+  z-index: 1;
+}
 

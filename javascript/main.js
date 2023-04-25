@@ -14,6 +14,9 @@ const startBtnDOM = document.querySelector("#start-btn"); // Start button
 const restartBtnDOM = document.querySelector("#restart-btn"); // Restart button
 const instructionsBtnDOM = document.querySelector("#instructions-btn"); // Go to instructions button
 
+const muteBtnDOM = document.querySelector("#boton-sonidos");
+let isMuted = false;
+
 const scissorsScoreDOM = document.querySelector(".scissors-counter");
 const razorsScoreDOM = document.querySelector(".razors-counter");
 
@@ -25,6 +28,7 @@ const scoreDOM = document.querySelector(".score-points");
 const finalScoreDOM = document.querySelector(".final-score");
 const hairWarningDOM = document.querySelector(".warning-cut");
 const beardWarningDOM = document.querySelector(".warning-shave");
+
 
 const gravitySpeed = 3;
 
@@ -86,6 +90,7 @@ instructionsBtnDOM.addEventListener("click", goToInstructions);
 startBtnDOM.addEventListener("click", startGame);
 restartBtnDOM.addEventListener("click", restartGame);
 
+
 window.addEventListener("keydown", (event) => {
   if (gameObj !== undefined && event.code === "ArrowLeft") {
     gameObj.customer.moveLeft();
@@ -93,3 +98,7 @@ window.addEventListener("keydown", (event) => {
     gameObj.customer.moveRight();
   }
 });
+
+
+
+
