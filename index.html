@@ -12,12 +12,12 @@
       id="bcg-song"
       controls="controls"
       loop
-      volume="0.05"
+      volume="1"
       autoplay="autoplay"
     >
       <source src="audio/PurpleNoise.mp3" />
     </audio>
-
+    <button id="play-pause"><p>- Click to Pause -</p><img src="images/pause.png" alt="pause"></button>
     <!-- SPLASH SCREEN -->
     <div id="splash-screen" class="container">
       <img
@@ -39,7 +39,6 @@
         width="600"
         alt="logo"
       />
-
       <div id="instructions">
         <p class="p1">
           - Your aim is to collect the max number of scissors and razors -
@@ -108,7 +107,6 @@
           <p>x</p>
           <p class="razors-counter">0</p>
         </div>
-
         <!-- Lives & Score -->
         <div class="scores">
           <div class="lives-imgs">
@@ -146,6 +144,7 @@
       <button id="restart-btn"><p class="btn">- Play Again! -</p></button>
     </div>
 
+    <!-- SCRIPTS -->
     <script src="javascript/main.js"></script>
     <script src="javascript/Game.js"></script>
     <script src="javascript/Customer.js"></script>

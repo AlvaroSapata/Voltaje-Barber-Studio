@@ -1,39 +1,75 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
+/* General Elements ___________________________________________________*/
 body {
   margin: 0;
   background-color: #e9eaec;
   font-family: "Roboto", sans-serif;
   color: rgb(0, 0, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("images/LogoBackground.png");
   background-size: cover;
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  position: relative;
+  top: 10px;
+}
+
+#bcg-song {
+  position: fixed;
+  top: 10px;
+  right: 12px;
+  width: 240px;
+  height: 50px;
+  z-index: 1;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: transparent;
+}
+
+#play-pause {
+  position: fixed;
+  top: 70px;
+  right: 12px;
+  width: 240px;
+  height: 50px;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  display: none;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 25px;
+}
+
+#play-pause img {
+  width: 38px;
+}
+
+/* Splash Screen ___________________________________________________ */
 
 #img-bcg {
   background-size: cover;
   height: 690px;
   width: 800px;
   border: 4px solid black;
-}
-
-#img-info {
-  background-size: cover;
-  height: 690px;
-  width: 800px;
-  border: 4px solid black;
-}
-
-#img-gameover {
-  background-size: cover;
-  height: 690px;
-  width: 800px;
-  border: 4px solid black;
-}
-
-#my-canvas {
-  background-color: #ebecee;
 }
 
 #instructions-btn {
@@ -54,6 +90,20 @@ body {
   top: 200px;
 }
 
+#splash-screen {
+  display: flex;
+  justify-content: center;
+}
+
+/* Instructions Screen ___________________________________________________*/
+
+#img-info {
+  background-size: cover;
+  height: 690px;
+  width: 800px;
+  border: 4px solid black;
+}
+
 #start-btn {
   position: absolute;
   top: 50px;
@@ -67,75 +117,11 @@ body {
   border: none;
 }
 
-#restart-btn {
-  position: relative;
-  top: -880px;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  color: black;
-  padding: 310px 365px;
-  font-size: 20px;
-  border-radius: 10px;
-  background-color: transparent;
-  border: none;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0px;
-  position: relative;
-  top: 10px;
-}
-
-#splash-screen {
-  display: flex; /* esto para ocultar pantallas */
-  justify-content: center;
-}
-
 #instructions-screen {
-  display: none; /* esto para ocultar pantallas */
+  display: none; /* Hide screen */
   justify-content: center;
   color: black;
   font-weight: bold;
-}
-
-/* #my-canvas {display: none; /* esto para ocultar pantallas */
-
-#canvas-div{
-  display: none;
-
- } 
-
-#gameover-screen {
-  display: none; /* esto para ocultar pantallas */
-  justify-content: center;
-  color: black;
-  font-weight: bold;
-}
-
-#gameover-screen p {
-  position: relative;
-  top: -570px;
-  font-size: 30px;
-}
-
-#gameover-screen .thanks {
-  color: black;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-#gameover-screen .btn {
-  position: relative;
-  top: 150px;
-  font-size: 25px;
-}
-
-#gameover-screen .final-score {
-  font-size: 20px;
 }
 
 #instructions {
@@ -198,14 +184,37 @@ body {
   height: 30px;
 }
 
+/* Game Screen ___________________________________________________*/
+
+#my-canvas {
+  display: none; /* Hide screen */
+  background-color: #606670;
+}
+
+#restart-btn {
+  position: relative;
+  top: -880px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: black;
+  padding: 310px 365px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: none;
+}
+
+#canvas-div {
+  display: none; /* Hide screen */
+}
+
 #score-screens {
   color: black;
   display: none;
   flex-direction: row;
   margin-top: 0px;
-  padding: 10px 0px ;
+  padding: 10px 0px;
   justify-content: flex-end;
-  /* justify-content:space-around */
   font-size: 20px;
   border-top: 0px;
   border-bottom: 3px;
@@ -275,11 +284,41 @@ body {
   height: 40px;
 }
 
-#bcg-song {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  width: 240px;
-  z-index: 1;
+/* GameOver Screen ___________________________________________________*/
+
+#img-gameover {
+  background-size: cover;
+  height: 690px;
+  width: 800px;
+  border: 4px solid black;
 }
 
+#gameover-screen {
+  display: none; /* Hide screen */
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+}
+
+#gameover-screen p {
+  position: relative;
+  top: -570px;
+  font-size: 30px;
+}
+
+#gameover-screen .thanks {
+  color: black;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#gameover-screen .btn {
+  position: relative;
+  top: 150px;
+  font-size: 25px;
+}
+
+#gameover-screen .final-score {
+  font-size: 20px;
+}
+/*  ___________________________________________________*/

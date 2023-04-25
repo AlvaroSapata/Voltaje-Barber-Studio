@@ -79,6 +79,8 @@ class Customer {
   draw = () => {
     // Plain face
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+
+    // Beard elements
     if (this.beardCounter === 0) {
       ctx.drawImage(
         this.imgBeard1,
@@ -113,6 +115,9 @@ class Customer {
       );
     } else {
     }
+
+    // Hair elements
+
     if (this.hairCounter === 0) {
       ctx.drawImage(
         this.imgHair1,
@@ -149,7 +154,7 @@ class Customer {
     }
   };
   moveLeft = () => {
-    if (this.x > 10) {
+    if (this.x > 10 && isGameOn === true) {
       this.x -= this.movementSpeed;
       this.xBeard1 -= this.movementSpeed;
       this.xBeard2 -= this.movementSpeed;
@@ -162,7 +167,7 @@ class Customer {
     }
   };
   moveRight = () => {
-    if (this.x < canvas.width - 110) {
+    if (this.x < canvas.width - 110 && isGameOn === true) {
       this.x += this.movementSpeed;
       this.xBeard1 += this.movementSpeed;
       this.xBeard2 += this.movementSpeed;

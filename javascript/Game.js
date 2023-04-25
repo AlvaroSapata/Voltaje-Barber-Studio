@@ -27,7 +27,7 @@ class Game {
     this.razorsCounter = 0;
 
     // Checks
-    this.isGameOn = true;
+    //this.isGameOn = true;
     this.randomLimit = 90;
     this.canLoseLife = true;
     this.canLoseLifeHair = true;
@@ -47,6 +47,7 @@ class Game {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
+  // todo: BONUS ??
   randomObjectSelector = () => {
     // todo: selects a random object to deploy
     let randomObject = Math.random() * 3;
@@ -246,14 +247,16 @@ class Game {
 
   gameOver = () => {
     // 1. Stop the game
-    this.isGameOn = false;
-
+    //this.isGameOn = false;
+    isGameOn = false;
     // 2. Hide canvas
     canvas.style.display = "none";
     scoresScreenDOM.style.display = "none";
+    playPauseBtnDOM.style.display = "none"
 
     // 3. Show game over screen
     gameOverScreenDOM.style.display = "flex";
+    
   };
 
   gameLoop = () => {
@@ -261,7 +264,6 @@ class Game {
     this.clearCanvas();
 
     //* 2. Actions and movements of the elements
-    //this.randomObjectSelector();
     this.spawnScissors();
     this.spawnRazors();
     this.spawnBombs();
@@ -306,7 +308,8 @@ class Game {
     });
 
     //* 4. Recursion ( requestAnimationFrame )
-    if (this.isGameOn === true) {
+    //this.isGameOn
+    if (isGameOn === true) {
       requestAnimationFrame(this.gameLoop); // 60ps invokes gameloop()
     }
   };
