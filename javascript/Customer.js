@@ -111,7 +111,8 @@ class Customer {
         this.wBeard4,
         this.hBeard4
       );
-    } else {}
+    } else {
+    }
     if (this.hairCounter === 0) {
       ctx.drawImage(
         this.imgHair1,
@@ -144,7 +145,8 @@ class Customer {
         this.wHair4,
         this.hHair4
       );
-    } else {}
+    } else {
+    }
   };
   moveLeft = () => {
     if (this.x > 10) {
@@ -178,8 +180,6 @@ class Customer {
     setInterval(() => {
       if (this.beardCounter >= 0 && this.beardCounter < this.maxGrowLength) {
         this.beardCounter++;
-        //console.log(this.beardCounter);
-        //todo: si esta mas de X que empiece a quitar vidas
       }
     }, this.growSpeed);
   };
@@ -189,26 +189,18 @@ class Customer {
     setInterval(() => {
       if (this.hairCounter >= 0 && this.hairCounter < this.maxGrowLength) {
         this.hairCounter++;
-        console.log(this.hairCounter);
-        //todo: si esta mas de X que empiece a quitar vidas
       }
     }, this.growSpeed);
   };
 
   shaveBeard = () => {
-    if ( this.beardCounter>= 0){
-      this.beardCounter=0
+    if (this.beardCounter >= 0) {
+      this.beardCounter = 0;
     }
-
-    //console.log(this.beardCounter);
   };
   cutHair = () => {
-    if ( this.hairCounter>= 0){
-      this.hairCounter=0
+    if (this.hairCounter >= 0) {
+      this.hairCounter = 0;
     }
-    console.log(this.hairCounter);
   };
 }
-
-
-

@@ -37,7 +37,10 @@ class Game {
   // METHODS OF THE GAME
   drawBackground = () => {
     ctx.drawImage(this.background, 0, 0, canvas.width, canvas.height);
-    ctx.fillRect(0,canvas.height -4,canvas.width,4)
+    ctx.fillRect(0, canvas.height - 4, canvas.width, 4);
+    ctx.fillRect(0, 0, canvas.width, 4);
+    ctx.fillRect(0, 0, 4, canvas.height);
+    ctx.fillRect(canvas.width - 4, 0, 4, canvas.height);
   };
 
   clearCanvas = () => {
@@ -145,7 +148,6 @@ class Game {
       ) {
         this.bombArray.shift();
         this.lives -= 1;
-        console.log(this.lives);
         const bombAudio = new Audio("audio/bang.wav");
         bombAudio.volume = 0.1;
         bombAudio.play();
@@ -172,7 +174,7 @@ class Game {
   livesCounter = () => {
     if (this.lives <= 0) {
       this.gameOver();
-      finalScoreDOM.innerText = `- You Scored ${this.score} points -`
+      finalScoreDOM.innerText = `- You Scored ${this.score} points -`;
     }
     if (this.lives === 3) {
       life3ImageDOM.src = "images/heart.png";
@@ -206,12 +208,12 @@ class Game {
   };
 
   canLoseLifeChecker = () => {
-    if (this.canLoseLifeHair === true && this.canLoseLifeBeard === true){
-      this.canLoseLife = true
+    if (this.canLoseLifeHair === true && this.canLoseLifeBeard === true) {
+      this.canLoseLife = true;
     } else {
       this.canLoseLife = false;
     }
-  }
+  };
 
   hairTooLong = () => {
     if (
@@ -221,23 +223,25 @@ class Game {
     ) {
       this.lives -= 0.5;
       this.canLoseLifeHair = false;
-      this.canLoseLifeBeard=false
-      console.log(this.lives);
+      this.canLoseLifeBeard = false;
       this.livesCounter();
     }
     if (this.customer.beardCounter >= 3) {
-      beardWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
-      <p>You Should Shave!</p>`;
+      /*       beardWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
+      <p>You Should Shave!</p>`; */
+      beardWarningDOM.style.opacity = 1;
     } else {
-      beardWarningDOM.innerHTML = ``;
+      /* beardWarningDOM.innerHTML = ``; */
+      beardWarningDOM.style.opacity = 0;
     }
     if (this.customer.hairCounter >= 3) {
-      hairWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
-      <p>You Should Cut Your Hair!</p>`;
+      /*       hairWarningDOM.innerHTML = `<img src="images/warning.png" alt="warning icon" />
+      <p>You Should Cut Your Hair!</p>`; */
+      hairWarningDOM.style.opacity = 1;
     } else {
-      hairWarningDOM.innerHTML = ``;
+      /*       hairWarningDOM.innerHTML = ``; */
+      hairWarningDOM.style.opacity = 0;
     }
-
   };
 
   gameOver = () => {
@@ -246,7 +250,7 @@ class Game {
 
     // 2. Hide canvas
     canvas.style.display = "none";
-    scoresScreenDOM.style.display ="none"
+    scoresScreenDOM.style.display = "none";
 
     // 3. Show game over screen
     gameOverScreenDOM.style.display = "flex";

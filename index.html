@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
-    <audio id="bcg-song" controls="controls" loop volume="0.2" autoplay="autoplay">
+    <audio
+      id="bcg-song"
+      controls="controls"
+      loop
+      volume="0.2"
+      autoplay="autoplay"
+    >
       <!-- autoplay="autoplay" -->
       <source src="audio/PurpleNoise.mp3" />
     </audio>
@@ -89,32 +95,44 @@
     <!-- GAME SCREEN -->
     <div id="#canvas-div" class="container">
       <canvas id="my-canvas" width="1000" height="600"></canvas>
+      <!-- Full scores -->
       <div id="score-screens">
+        <!-- Warning shave -->
         <div class="warning-shave">
-          <img src="" alt="" />
-          <p></p> 
+          <img src="images/warning.png" alt="warning icon" />
+          <p>You Should Shave!</p>
         </div>
-        <div class="warning-cut">
-        <img src="" alt="" />
-          <p></p> 
-        </div>
-        <div class="scores">
-          <img src="images/ScissorsDown.png" alt="icon scissors" />
-          <p> x </p>
-          <p class="scissors-counter"> 0 </p>
+        <!-- Razors counter -->
+        <div class="shave-icon">
           <img src="images/razor.png" alt="icon razor" />
-          <p> x </p>
-          <p class="razors-counter"> 0 </p>
-          <div class="lives-imgs"><!-- aqui las vidas -->
-          <img class="life-1" src="images/heart.png" alt="full">
-          <img class="life-2" src="images/heart.png" alt="full">
-          <img class="life-3" src="images/heart.png" alt="full">
+          <p>x</p>
+          <p class="razors-counter">0</p>
+        </div>
+
+        <!-- Lives & Score -->
+        <div class="scores">
+          <div class="lives-imgs">
+            <!-- aqui las vidas -->
+            <img class="life-1" src="images/heart.png" alt="full" />
+            <img class="life-2" src="images/heart.png" alt="full" />
+            <img class="life-3" src="images/heart.png" alt="full" />
           </div>
           <p class="score-points">Score: 0</p>
         </div>
+        <!-- Scissors counter -->
+        <div class="cut-icon">
+          <img src="images/ScissorsDown.png" alt="icon scissors" />
+          <p>x</p>
+          <p class="scissors-counter">0</p>
+        </div>
+        <!-- Warning cut -->
+        <div class="warning-cut">
+          <img src="images/warning.png" alt="warning icon" />
+          <p>You Should Cut Your Hair!</p>
+        </div>
       </div>
     </div>
-    
+
     <!-- GAME OVER SCREEN -->
     <div id="gameover-screen" class="container">
       <img
@@ -127,8 +145,6 @@
       <p class="final-score">- You Scored 0 points. -</p>
       <button id="restart-btn"><p class="btn">- Play Again! -</p></button>
     </div>
-
- 
 
     <script src="javascript/main.js"></script>
     <script src="javascript/Game.js"></script>
