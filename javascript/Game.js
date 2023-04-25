@@ -28,7 +28,7 @@ class Game {
 
     // Checks
     //this.isGameOn = true;
-    this.randomLimit = 90;
+    this.randomLimit = 900;
     this.canLoseLife = true;
     this.canLoseLifeHair = true;
     this.canLoseLifeBeard = true;

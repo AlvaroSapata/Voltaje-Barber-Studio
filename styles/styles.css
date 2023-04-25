@@ -38,11 +38,12 @@ body {
   border-radius: 30px;
   border-width: 4px;
   background-color: transparent;
+  font-weight: bold;
 }
 
 #play-pause {
   position: fixed;
-  top: 75px;
+  top: 80px;
   right: 12px;
   width: 248px;
   height: 58px;
@@ -67,7 +68,7 @@ body {
 
 #difficulty-button{
   position: fixed;
-  top: 141px;
+  top: 151px;
   right: 12px;
   width: 248px;
   height: 58px;

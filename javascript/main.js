@@ -100,10 +100,10 @@ restartBtnDOM.addEventListener("click", restartGame);
 playPauseBtnDOM.addEventListener("click", () => {
   if (isGameOn === true){
     isGameOn = false;
-    playPauseBtnDOM.innerHTML = `- Click to Pause -<img src="images/play.png" alt="play">`
+    playPauseBtnDOM.innerHTML = `- Click to Resume -<img src="images/play.png" alt="play">`
   }else{
     isGameOn = true;
-    playPauseBtnDOM.innerHTML = `- Click to Resume -<img src="images/pause.png" alt="pause">`
+    playPauseBtnDOM.innerHTML = `- Click to Pause -<img src="images/pause.png" alt="pause">`
     gameObj.gameLoop(); // Volver a llamar a gameLoop
   } 
 });
