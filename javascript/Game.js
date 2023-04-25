@@ -130,7 +130,7 @@ class Game {
         this.score += this.beardScore;
         this.razorArray.shift();
         const razorAudio = new Audio("audio/razor.wav");
-        razorAudio.volume=0.6;
+        razorAudio.volume = 0.6;
         razorAudio.play();
         this.razorsCounter += 1;
         this.customer.shaveBeard();
@@ -230,7 +230,7 @@ class Game {
       this.canLoseLifeHair = false;
       this.canLoseLifeBeard = false;
       this.livesCounter();
-      const ouchAudio2 = new Audio ("audio/ouch.wav");
+      const ouchAudio2 = new Audio("audio/ouch.wav");
       ouchAudio2.play();
     }
     if (this.customer.beardCounter >= 3) {
@@ -252,11 +252,11 @@ class Game {
     // 2. Hide canvas
     canvas.style.display = "none";
     scoresScreenDOM.style.display = "none";
-    playPauseBtnDOM.style.display = "none"
+    playPauseBtnDOM.style.display = "none";
+    difficultyBtnDOM.style.display = "none";
 
     // 3. Show game over screen
     gameOverScreenDOM.style.display = "flex";
-    
   };
 
   gameLoop = () => {

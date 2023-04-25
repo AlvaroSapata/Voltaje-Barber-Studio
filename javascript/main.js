@@ -19,6 +19,8 @@ let isMuted = false;
 
 const playPauseBtnDOM = document.querySelector("#play-pause"); // Play - pause the game button
 
+const difficultyBtnDOM = document.querySelector('#difficulty-button');
+
 const scissorsScoreDOM = document.querySelector(".scissors-counter"); // Number of scissors collected
 const razorsScoreDOM = document.querySelector(".razors-counter"); // Number of razors collected
 
@@ -50,8 +52,9 @@ const startGame = () => {
   instructionsScreenDOM.style.display = "none"; // Hides info
   canvas.style.display = "flex"; // Shows canvas
   scoresScreenDOM.style.display = "flex"; // Show scores
-  gameOverScreenDOM.style.display = "none";
-  playPauseBtnDOM.style.display = "flex"
+  gameOverScreenDOM.style.display = "none"; // Hide gameover
+  playPauseBtnDOM.style.display = "flex" // Show pause button
+  difficultyBtnDOM.style.display = "flex" // Show difficulty button
 
   // 2. Create game element
   gameObj = new Game();
@@ -67,7 +70,8 @@ const restartGame = () => {
   gameOverScreenDOM.style.display = "none";
   canvas.style.display = "block";
   scoresScreenDOM.style.display = "flex"; // Show scores
-  playPauseBtnDOM.style.display = "flex"
+  playPauseBtnDOM.style.display = "flex" // Show pause button
+  difficultyBtnDOM.style.display = "flex" // Show difficulty button
   // Reset DOM elements
   life3ImageDOM.src = "images/heart.png";
   life2ImageDOM.src = "images/heart.png";
@@ -102,6 +106,24 @@ playPauseBtnDOM.addEventListener("click", () => {
     playPauseBtnDOM.innerHTML = `- Click to Resume -<img src="images/pause.png" alt="pause">`
     gameObj.gameLoop(); // Volver a llamar a gameLoop
   } 
+});
+difficultyBtnDOM.addEventListener('click', () => {
+  if (gravitySpeed === 3) {
+    gravitySpeed = 3.5;
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 2 -';
+  } else if (gravitySpeed === 3.5) {
+    gravitySpeed = 4;
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 3 -';
+  } else if (gravitySpeed === 4) {
+    gravitySpeed = 4.5;
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 4 -';
+  } else if (gravitySpeed === 4.5) {
+    gravitySpeed = 5;
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 5 -';
+  } else {
+    gravitySpeed = 3;
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 1 -';
+  }
 });
 
 // Customer movement
