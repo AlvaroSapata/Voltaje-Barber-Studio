@@ -28,8 +28,10 @@ class Game {
 
     // Checks
     this.isGameOn = true;
-    this.randomLimit = 900;
+    this.randomLimit = 90;
     this.canLoseLife = true;
+    this.canLoseLifeHair = true;
+    this.canLoseLifeBeard = true;
   }
 
   // METHODS OF THE GAME
@@ -105,7 +107,7 @@ class Game {
         scissorAudio.play();
         this.scissorsCounter += 1;
         this.customer.cutHair();
-        this.canLoseLife = true;
+        this.canLoseLifeHair = true;
         scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
         scoreDOM.innerText = `Score: ${this.score}`;
       }
@@ -126,7 +128,7 @@ class Game {
         razorAudio.play();
         this.razorsCounter += 1;
         this.customer.shaveBeard();
-        this.canLoseLife = true;
+        this.canLoseLifeBeard = true;
         razorsScoreDOM.innerText = `${this.razorsCounter}`;
         scoreDOM.innerText = `Score: ${this.score}`;
       }
@@ -203,6 +205,14 @@ class Game {
     }
   };
 
+  canLoseLifeChecker = () => {
+    if (this.canLoseLifeHair === true && this.canLoseLifeBeard === true){
+      this.canLoseLife = true
+    } else {
+      this.canLoseLife = false;
+    }
+  }
+
   hairTooLong = () => {
     if (
       this.canLoseLife === true &&
@@ -210,7 +220,8 @@ class Game {
         this.customer.hairCounter === this.customer.maxGrowLength)
     ) {
       this.lives -= 0.5;
-      this.canLoseLife = false;
+      this.canLoseLifeHair = false;
+      this.canLoseLifeBeard=false
       console.log(this.lives);
       this.livesCounter();
     }
@@ -274,6 +285,7 @@ class Game {
 
     // Lives system
     this.hairTooLong();
+    this.canLoseLifeChecker();
 
     //* 3. Drawing of the elements
     this.drawBackground();

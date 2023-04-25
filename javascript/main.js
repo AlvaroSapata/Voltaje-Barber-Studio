@@ -62,12 +62,26 @@ const startGame = () => {
 
 const restartGame = () => {
   console.log("Test Restart");
+    // 1. Swap screens
   gameOverScreenDOM.style.display = "none";
   canvas.style.display = "block";
   scoresScreenDOM.style.display ="flex" // Show scores
+    // Reset DOM elements
+    life3ImageDOM.src = "images/heart.png";
+    life2ImageDOM.src = "images/heart.png";
+    life1ImageDOM.src = "images/heart.png";
+    beardWarningDOM.innerHTML = ``;
+    hairWarningDOM.innerHTML = ``;
+    scissorsScoreDOM.innerText = `0`;
+    razorsScoreDOM.innerText = `0`;
+    scoreDOM.innerText = `Score: 0`;
+
+    // 2. Create game element
   gameObj = new Game();
   gameObj.customer.growBeard();
   gameObj.customer.growHair();
+
+    // 3. Start the recursion
   gameObj.gameLoop();
 };
 

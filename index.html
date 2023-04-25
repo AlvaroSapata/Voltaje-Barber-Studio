@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
-
+    <audio id="bcg-song" controls="controls" loop volume="0.2" autoplay="autoplay">
+      <!-- autoplay="autoplay" -->
+      <source src="audio/PurpleNoise.mp3" />
+    </audio>
     <!-- SPLASH SCREEN -->
     <div id="splash-screen" class="container">
       <img
@@ -84,7 +87,7 @@
     </div>
 
     <!-- GAME SCREEN -->
-    <div id="#canvas-div">
+    <div id="#canvas-div" class="container">
       <canvas id="my-canvas" width="1000" height="600"></canvas>
       <div id="score-screens">
         <div class="warning-shave">
@@ -124,10 +127,7 @@
       <p class="final-score">- You Scored 0 points. -</p>
       <button id="restart-btn"><p class="btn">- Play Again! -</p></button>
     </div>
-    <audio id="bcg-song" controls="controls" loop volume="0.2" autoplay="autoplay">
-      <!-- autoplay="autoplay" -->
-      <source src="audio/PurpleNoise.mp3" />
-    </audio>
+
  
 
     <script src="javascript/main.js"></script>

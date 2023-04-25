@@ -93,15 +93,12 @@ body {
   font-weight: bold;
 }
 
-#my-canvas {
-  display: none; /* esto para ocultar pantallas */
-  /* justify-content: center; */
-}
-
+/* #my-canvas {display: none; /* esto para ocultar pantallas */
+/* 
 #canvas-div{
   display: none;
   justify-content: center;
- }
+ } */
 
 #gameover-screen {
   display: none; /* esto para ocultar pantallas */
@@ -124,7 +121,7 @@ font-weight: bold;
 
 #gameover-screen .btn {
   position: relative;
-  top: 100px;
+  top: 150px;
   font-size: 25px;
 }
 
@@ -198,6 +195,7 @@ font-weight: bold;
   flex-direction: row;
   margin-top: 10px;
   justify-content:center
+  
   
 }
 
