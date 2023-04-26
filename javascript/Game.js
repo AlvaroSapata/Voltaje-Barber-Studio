@@ -28,7 +28,7 @@ class Game {
 
     // Checks
     //this.isGameOn = true;
-    this.randomLimit = 350;
+    this.randomLimit = 900;
     this.canLoseLife = true;
     this.canLoseLifeHair = true;
     this.canLoseLifeBeard = true;
@@ -99,7 +99,8 @@ class Game {
 
   checkColisionCustomerScissor = () => {
     this.scissorsArray.forEach((eachScissor) => {
-      if (eachScissor.canCollide === true &&
+      if (
+        eachScissor.canCollide === true &&
         eachScissor.x < this.customer.x + this.customer.w &&
         eachScissor.x + eachScissor.w > this.customer.x &&
         eachScissor.y < this.customer.y + this.customer.h &&
@@ -114,7 +115,7 @@ class Game {
         this.canLoseLifeHair = true;
         scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
         scoreDOM.innerText = `Score: ${this.score}`;
-        eachScissor.img.src="images/ScissorsDownClosed.png"
+        eachScissor.img.src = "images/ScissorsDownClosed.png";
         eachScissor.canCollide = false;
         setTimeout(() => {
           this.scissorsArray.shift();
@@ -125,7 +126,8 @@ class Game {
 
   checkColisionCustomerRazor = () => {
     this.razorArray.forEach((eachRazor) => {
-      if (eachRazor.canCollide === true &&
+      if (
+        eachRazor.canCollide === true &&
         eachRazor.x < this.customer.x + this.customer.w &&
         eachRazor.x + eachRazor.w > this.customer.x &&
         eachRazor.y < this.customer.y + this.customer.h &&
@@ -140,7 +142,7 @@ class Game {
         this.canLoseLifeBeard = true;
         razorsScoreDOM.innerText = `${this.razorsCounter}`;
         scoreDOM.innerText = `Score: ${this.score}`;
-        eachRazor.img.src="images/razorClosed.png"
+        eachRazor.img.src = "images/razorClosed.png";
         eachRazor.canCollide = false;
         setTimeout(() => {
           this.razorArray.shift();
@@ -153,10 +155,10 @@ class Game {
     this.bombArray.forEach((eachBomb) => {
       if (
         eachBomb.canCollide === true &&
-        (eachBomb.x < this.customer.x + this.customer.w &&
+        eachBomb.x < this.customer.x + this.customer.w &&
         eachBomb.x + eachBomb.w > this.customer.x &&
         eachBomb.y < this.customer.y + this.customer.h &&
-        eachBomb.h + eachBomb.y > this.customer.y)
+        eachBomb.h + eachBomb.y > this.customer.y
       ) {
         this.lives -= 1;
         const bombAudio = new Audio("audio/bang.wav");
@@ -259,8 +261,22 @@ class Game {
     }
   };
 
-  oopsDrawer = () => {
-    //todo poner que lo dibuje siempre y cuando se produzca le cambio la opacidad a 1?
+  autoIncreaseDifficulty = () => {
+    if (isAutoIncreaseOn === true) {
+      if (this.score >= 25 && this.score <50) {
+        gravitySpeed = 4;
+      } else if (this.score >= 50 && this.score <75) {
+        gravitySpeed = 5;
+      } else if (this.score >= 75 && this.score <100) {
+        gravitySpeed = 6;
+      } else if (this.score >= 100 && this.score <125) {
+        gravitySpeed = 7;
+      } else if (this.score >= 125) {
+        gravitySpeed = 8;
+      } else {
+        gravitySpeed = 3;
+      }
+    }
   };
 
   gameOver = () => {
@@ -272,6 +288,7 @@ class Game {
     scoresScreenDOM.style.display = "none";
     playPauseBtnDOM.style.display = "none";
     difficultyBtnDOM.style.display = "none";
+    autoDifficultyBtnDOM.style.display = "none";
 
     // 3. Show game over screen
     gameOverScreenDOM.style.display = "flex";
@@ -313,6 +330,9 @@ class Game {
     // Lives system
     this.hairTooLong();
     this.canLoseLifeChecker();
+
+    // Difficulty level
+    this.autoIncreaseDifficulty();
 
     //* 3. Drawing of the elements
     this.drawBackground();

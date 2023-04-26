@@ -20,6 +20,8 @@ let isMuted = false;
 const playPauseBtnDOM = document.querySelector("#play-pause"); // Play - pause the game button
 
 const difficultyBtnDOM = document.querySelector("#difficulty-button");
+const autoDifficultyBtnDOM = document.querySelector("#auto-difficulty-button");
+let isAutoIncreaseOn = false;
 
 const scissorsScoreDOM = document.querySelector(".scissors-counter"); // Number of scissors collected
 const razorsScoreDOM = document.querySelector(".razors-counter"); // Number of razors collected
@@ -54,6 +56,7 @@ const startGame = () => {
   scoresScreenDOM.style.display = "flex"; // Show scores
   gameOverScreenDOM.style.display = "none"; // Hide gameover
   playPauseBtnDOM.style.display = "flex"; // Show pause button
+  autoDifficultyBtnDOM.style.display = "flex"; // Show auto difficulty button
   difficultyBtnDOM.style.display = "flex"; // Show difficulty button
 
   // 2. Create game element
@@ -71,6 +74,7 @@ const restartGame = () => {
   canvas.style.display = "block";
   scoresScreenDOM.style.display = "flex"; // Show scores
   playPauseBtnDOM.style.display = "flex"; // Show pause button
+  autoDifficultyBtnDOM.style.display = "flex"; // Show auto difficulty button
   difficultyBtnDOM.style.display = "flex"; // Show difficulty button
   // Reset DOM elements
   life3ImageDOM.src = "images/heart.png";
@@ -108,26 +112,38 @@ playPauseBtnDOM.addEventListener("click", () => {
   }
 });
 difficultyBtnDOM.addEventListener("click", () => {
-  if (gravitySpeed === 3) {
-    gravitySpeed = 4;
-    difficultyBtnDOM.innerHTML =
-      "- Click to Change Difficulty -<br>- Level 2 -";
-  } else if (gravitySpeed === 4) {
-    gravitySpeed = 5;
-    difficultyBtnDOM.innerHTML =
-      "- Click to Change Difficulty -<br>- Level 3 -";
-  } else if (gravitySpeed === 5) {
-    gravitySpeed = 6;
-    difficultyBtnDOM.innerHTML =
-      "- Click to Change Difficulty -<br>- Level 4 -";
-  } else if (gravitySpeed === 6) {
-    gravitySpeed = 7;
-    difficultyBtnDOM.innerHTML =
-      "- Click to Change Difficulty -<br>- Level 5 -";
+  if (isAutoIncreaseOn === false) {
+    if (gravitySpeed === 3) {
+      gravitySpeed = 4;
+      difficultyBtnDOM.innerHTML =
+        "- Click to Change Difficulty -<br>- Level 2 -";
+    } else if (gravitySpeed === 4) {
+      gravitySpeed = 5;
+      difficultyBtnDOM.innerHTML =
+        "- Click to Change Difficulty -<br>- Level 3 -";
+    } else if (gravitySpeed === 5) {
+      gravitySpeed = 6;
+      difficultyBtnDOM.innerHTML =
+        "- Click to Change Difficulty -<br>- Level 4 -";
+    } else if (gravitySpeed === 6) {
+      gravitySpeed = 7;
+      difficultyBtnDOM.innerHTML =
+        "- Click to Change Difficulty -<br>- Level 5 -";
+    } else {
+      gravitySpeed = 3;
+      difficultyBtnDOM.innerHTML =
+        "- Click to Change Difficulty -<br>- Level 1 -";
+    }
+  }
+});
+autoDifficultyBtnDOM.addEventListener("click", () => {
+  isAutoIncreaseOn = !isAutoIncreaseOn;
+  if (isAutoIncreaseOn === true) {
+    autoDifficultyBtnDOM.innerHTML = `- Click to Deactivate -<br>- Auto Difficulty - <img src="images/tick.png" alt="deactivate">`;
+    difficultyBtnDOM.style.display = "none";
   } else {
-    gravitySpeed = 3;
-    difficultyBtnDOM.innerHTML =
-      "- Click to Change Difficulty -<br>- Level 1 -";
+    autoDifficultyBtnDOM.innerHTML = `- Click to Activate -<br>- Auto Difficulty - <img src="images/x.png" alt="activate">`;
+    difficultyBtnDOM.style.display = "flex";
   }
 });
 
@@ -142,12 +158,16 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+// Just to test how would react on a phone
 window.addEventListener("touchstart", (event) => {
-  const touchX = event.touches[0].clientX; // Obtener la posición X del toque
+  // Get the touch position with clientX
+  const touchX = event.touches[0].clientX;
+  // Get the layout width
   const screenWidth = window.innerWidth;
+  // Checks whether is a touch on the right side or in the left
   if (gameObj !== undefined && touchX < screenWidth / 2) {
-    gameObj.customer.moveLeftFlow2(); // Toque en el lado izquierdo de la pantalla
+    gameObj.customer.moveLeftFlow2();
   } else {
-    gameObj.customer.moveRightFlow2(); // Toque en el lado derecho de la pantalla
+    gameObj.customer.moveRightFlow2();
   }
 });
