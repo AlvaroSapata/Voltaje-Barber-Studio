@@ -28,7 +28,7 @@ class Game {
 
     // Checks
     //this.isGameOn = true;
-    this.randomLimit = 900;
+    this.randomLimit = 350;
     this.canLoseLife = true;
     this.canLoseLifeHair = true;
     this.canLoseLifeBeard = true;
@@ -99,14 +99,13 @@ class Game {
 
   checkColisionCustomerScissor = () => {
     this.scissorsArray.forEach((eachScissor) => {
-      if (
+      if (eachScissor.canCollide === true &&
         eachScissor.x < this.customer.x + this.customer.w &&
         eachScissor.x + eachScissor.w > this.customer.x &&
         eachScissor.y < this.customer.y + this.customer.h &&
         eachScissor.h + eachScissor.y > this.customer.y
       ) {
         this.score += this.hairScore;
-        this.scissorsArray.shift();
         const scissorAudio = new Audio("audio/scissors.wav");
         scissorAudio.volume = 0.8;
         scissorAudio.play();
@@ -115,20 +114,24 @@ class Game {
         this.canLoseLifeHair = true;
         scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
         scoreDOM.innerText = `Score: ${this.score}`;
+        eachScissor.img.src="images/ScissorsDownClosed.png"
+        eachScissor.canCollide = false;
+        setTimeout(() => {
+          this.scissorsArray.shift();
+        }, 100);
       }
     });
   };
 
   checkColisionCustomerRazor = () => {
     this.razorArray.forEach((eachRazor) => {
-      if (
+      if (eachRazor.canCollide === true &&
         eachRazor.x < this.customer.x + this.customer.w &&
         eachRazor.x + eachRazor.w > this.customer.x &&
         eachRazor.y < this.customer.y + this.customer.h &&
         eachRazor.h + eachRazor.y > this.customer.y
       ) {
         this.score += this.beardScore;
-        this.razorArray.shift();
         const razorAudio = new Audio("audio/razor.wav");
         razorAudio.volume = 0.6;
         razorAudio.play();
@@ -137,6 +140,11 @@ class Game {
         this.canLoseLifeBeard = true;
         razorsScoreDOM.innerText = `${this.razorsCounter}`;
         scoreDOM.innerText = `Score: ${this.score}`;
+        eachRazor.img.src="images/razorClosed.png"
+        eachRazor.canCollide = false;
+        setTimeout(() => {
+          this.razorArray.shift();
+        }, 100);
       }
     });
   };
@@ -144,12 +152,12 @@ class Game {
   checkColisionCustomerBomb = () => {
     this.bombArray.forEach((eachBomb) => {
       if (
-        eachBomb.x < this.customer.x + this.customer.w &&
+        eachBomb.canCollide === true &&
+        (eachBomb.x < this.customer.x + this.customer.w &&
         eachBomb.x + eachBomb.w > this.customer.x &&
         eachBomb.y < this.customer.y + this.customer.h &&
-        eachBomb.h + eachBomb.y > this.customer.y
+        eachBomb.h + eachBomb.y > this.customer.y)
       ) {
-        this.bombArray.shift();
         this.lives -= 1;
         const bombAudio = new Audio("audio/bang.wav");
         bombAudio.volume = 0.04;
@@ -157,6 +165,12 @@ class Game {
         this.livesCounter();
         const ouchAudio = new Audio("audio/ouch.wav");
         ouchAudio.play();
+        // visual effect
+        eachBomb.img.src = "images/explosion2.png";
+        eachBomb.canCollide = false;
+        setTimeout(() => {
+          this.bombArray.shift();
+        }, 100);
       }
     });
   };

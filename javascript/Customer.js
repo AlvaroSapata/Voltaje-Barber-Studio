@@ -10,7 +10,6 @@ class Customer {
     this.movementSpeed = 30; // Movement speed of the customer
     this.growSpeed = 2000; // Growing speed
     this.maxGrowLength = 5; // Maximun to start losing lives
-    //this.isMoving = false;
 
     // Beards
     this.beardCounter = 0;
@@ -166,6 +165,7 @@ class Customer {
       this.xHair4 -= this.movementSpeed;
     }
   };
+  
   moveRight = () => {
     if (this.x < canvas.width - 110 && isGameOn === true) {
       this.x += this.movementSpeed;
