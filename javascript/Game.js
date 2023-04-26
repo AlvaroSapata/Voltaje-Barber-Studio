@@ -18,6 +18,9 @@ class Game {
     // Bomb
     this.bombArray = [];
 
+    // Trimmer
+    this.trimmerArray = [];
+
     // Score & Lives
     this.score = 0;
     this.hairScore = 2;
@@ -32,6 +35,8 @@ class Game {
     this.canLoseLife = true;
     this.canLoseLifeHair = true;
     this.canLoseLifeBeard = true;
+    this.canSpawnTrimmer = true;
+    this.isImmune = false;
   }
 
   // METHODS OF THE GAME
@@ -45,20 +50,6 @@ class Game {
 
   clearCanvas = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  };
-
-  // todo: BONUS ??
-  randomObjectSelector = () => {
-    // todo: selects a random object to deploy
-    let randomObject = Math.random() * 3;
-
-    if (randomObject <= 1) {
-      this.spawnScissors();
-    } else if (randomObject <= 2 && randomObject > 1) {
-      this.spawnRazors();
-    } else {
-      this.spawnBombs();
-    }
   };
 
   spawnScissors = () => {
@@ -97,6 +88,21 @@ class Game {
     }
   };
 
+  spawnTrimmers = () => {
+    // when = 1 and 10 seconds since last
+    let randomPossibility = Math.random() * 100;
+    let randomTrimmersPosition = Math.random() * this.randomLimit;
+    if (randomPossibility < 1 && this.canSpawnTrimmer === true) {
+      let newtrimmer = new Trimmer(randomTrimmersPosition); // create new
+      this.trimmerArray.push(newtrimmer); // add to array
+      this.canSpawnTrimmer = false;
+      console.log(randomTrimmersPosition);
+      setTimeout(() => {
+        this.canSpawnTrimmer = true;
+      }, 10000);
+    }
+  };
+
   checkColisionCustomerScissor = () => {
     this.scissorsArray.forEach((eachScissor) => {
       if (
@@ -106,20 +112,37 @@ class Game {
         eachScissor.y < this.customer.y + this.customer.h &&
         eachScissor.h + eachScissor.y > this.customer.y
       ) {
-        this.score += this.hairScore;
-        const scissorAudio = new Audio("audio/scissors.wav");
-        scissorAudio.volume = 0.8;
-        scissorAudio.play();
-        this.scissorsCounter += 1;
-        this.customer.cutHair();
-        this.canLoseLifeHair = true;
-        scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
-        scoreDOM.innerText = `Score: ${this.score}`;
-        eachScissor.img.src = "images/ScissorsDownClosed.png";
-        eachScissor.canCollide = false;
-        setTimeout(() => {
-          this.scissorsArray.shift();
-        }, 100);
+        if (this.isImmune === true) {
+          this.score += this.hairScore * 3;
+          const scissorAudio = new Audio("audio/scissors.wav");
+          scissorAudio.volume = 0.8;
+          scissorAudio.play();
+          this.scissorsCounter += 1;
+          this.customer.cutHair();
+          this.canLoseLifeHair = true;
+          scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
+          scoreDOM.innerText = `Score: ${this.score}`;
+          eachScissor.img.src = "images/ScissorsDownClosed.png";
+          eachScissor.canCollide = false;
+          setTimeout(() => {
+            this.scissorsArray.shift();
+          }, 100);
+        } else {
+          this.score += this.hairScore;
+          const scissorAudio = new Audio("audio/scissors.wav");
+          scissorAudio.volume = 0.8;
+          scissorAudio.play();
+          this.scissorsCounter += 1;
+          this.customer.cutHair();
+          this.canLoseLifeHair = true;
+          scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
+          scoreDOM.innerText = `Score: ${this.score}`;
+          eachScissor.img.src = "images/ScissorsDownClosed.png";
+          eachScissor.canCollide = false;
+          setTimeout(() => {
+            this.scissorsArray.shift();
+          }, 100);
+        }
       }
     });
   };
@@ -133,20 +156,37 @@ class Game {
         eachRazor.y < this.customer.y + this.customer.h &&
         eachRazor.h + eachRazor.y > this.customer.y
       ) {
-        this.score += this.beardScore;
-        const razorAudio = new Audio("audio/razor.wav");
-        razorAudio.volume = 0.6;
-        razorAudio.play();
-        this.razorsCounter += 1;
-        this.customer.shaveBeard();
-        this.canLoseLifeBeard = true;
-        razorsScoreDOM.innerText = `${this.razorsCounter}`;
-        scoreDOM.innerText = `Score: ${this.score}`;
-        eachRazor.img.src = "images/razorClosed.png";
-        eachRazor.canCollide = false;
-        setTimeout(() => {
-          this.razorArray.shift();
-        }, 100);
+        if (this.isImmune === true) {
+          this.score += this.beardScore * 3;
+          const razorAudio = new Audio("audio/razor.wav");
+          razorAudio.volume = 0.6;
+          razorAudio.play();
+          this.razorsCounter += 1;
+          this.customer.shaveBeard();
+          this.canLoseLifeBeard = true;
+          razorsScoreDOM.innerText = `${this.razorsCounter}`;
+          scoreDOM.innerText = `Score: ${this.score}`;
+          eachRazor.img.src = "images/razorClosed.png";
+          eachRazor.canCollide = false;
+          setTimeout(() => {
+            this.razorArray.shift();
+          }, 100);
+        } else {
+          this.score += this.beardScore;
+          const razorAudio = new Audio("audio/razor.wav");
+          razorAudio.volume = 0.6;
+          razorAudio.play();
+          this.razorsCounter += 1;
+          this.customer.shaveBeard();
+          this.canLoseLifeBeard = true;
+          razorsScoreDOM.innerText = `${this.razorsCounter}`;
+          scoreDOM.innerText = `Score: ${this.score}`;
+          eachRazor.img.src = "images/razorClosed.png";
+          eachRazor.canCollide = false;
+          setTimeout(() => {
+            this.razorArray.shift();
+          }, 100);
+        }
       }
     });
   };
@@ -160,19 +200,61 @@ class Game {
         eachBomb.y < this.customer.y + this.customer.h &&
         eachBomb.h + eachBomb.y > this.customer.y
       ) {
-        this.lives -= 1;
-        const bombAudio = new Audio("audio/bang.wav");
-        bombAudio.volume = 0.04;
-        bombAudio.play();
-        this.livesCounter();
-        const ouchAudio = new Audio("audio/ouch.wav");
-        ouchAudio.play();
-        // visual effect
-        eachBomb.img.src = "images/explosion2.png";
-        eachBomb.canCollide = false;
+        if (this.isImmune === true) {
+          const bombAudio = new Audio("audio/bang.wav");
+          bombAudio.volume = 0.04;
+          bombAudio.play();
+          this.livesCounter();
+          const ouchAudio = new Audio("audio/ouch.wav");
+          ouchAudio.play();
+          // visual effect
+          eachBomb.img.src = "images/explosion2.png";
+          eachBomb.canCollide = false;
+          setTimeout(() => {
+            this.bombArray.shift();
+          }, 100);
+        } else {
+          this.lives -= 1;
+          const bombAudio = new Audio("audio/bang.wav");
+          bombAudio.volume = 0.04;
+          bombAudio.play();
+          this.livesCounter();
+          const ouchAudio = new Audio("audio/ouch.wav");
+          ouchAudio.play();
+          // visual effect
+          eachBomb.img.src = "images/explosion2.png";
+          eachBomb.canCollide = false;
+          setTimeout(() => {
+            this.bombArray.shift();
+          }, 100);
+        }
+      }
+    });
+  };
+
+  checkColisionCustomerTrimmer = () => {
+    this.trimmerArray.forEach((eachTrimmer) => {
+      if (
+        eachTrimmer.canCollide === true &&
+        eachTrimmer.x < this.customer.x + this.customer.w &&
+        eachTrimmer.x + eachTrimmer.w > this.customer.x &&
+        eachTrimmer.y < this.customer.y + this.customer.h &&
+        eachTrimmer.h + eachTrimmer.y > this.customer.y
+      ) {
+        const trimmerAudio = new Audio("audio/trimmer.wav");
+        trimmerAudio.volume = 0.6;
+        trimmerAudio.play();
+        this.isImmune = true;
+        this.trimmerArray.shift();
+        console.log(this.isImmune);
         setTimeout(() => {
-          this.bombArray.shift();
-        }, 100);
+          const immunityAudio = new Audio("audio/Immune5sec.mp3");
+          immunityAudio.volume = 0.6;
+          immunityAudio.play();
+        }, 50);
+        setTimeout(() => {
+          this.isImmune = false;
+        }, 5000);
       }
     });
   };
@@ -190,6 +272,15 @@ class Game {
   removeBombs = () => {
     // remove when out or when colide
     if (this.bombArray[0].y > canvas.height) this.bombArray.shift();
+  };
+
+  removeTrimmers = () => {
+    // remove when out or when colide
+    if (
+      this.trimmerArray.length !== 0 &&
+      this.trimmerArray[0].y > canvas.height
+    )
+      this.trimmerArray.shift();
   };
 
   livesCounter = () => {
@@ -315,6 +406,7 @@ class Game {
     this.spawnScissors();
     this.spawnRazors();
     this.spawnBombs();
+    this.spawnTrimmers();
 
     // Gravity
     this.scissorsArray.forEach((eachScissor) => {
@@ -326,6 +418,9 @@ class Game {
     this.bombArray.forEach((eachBomb) => {
       eachBomb.gravity();
     });
+    this.trimmerArray.forEach((eachTrimmer) => {
+      eachTrimmer.gravity();
+    });
 
     this.customer.moveLeftFlow();
     this.customer.moveRightFlow();
@@ -334,11 +429,13 @@ class Game {
     this.checkColisionCustomerScissor();
     this.checkColisionCustomerRazor();
     this.checkColisionCustomerBomb();
+    this.checkColisionCustomerTrimmer();
 
     // Remove elements
     this.removeScissors();
     this.removeRazors();
     this.removeBombs();
+    this.removeTrimmers();
 
     // Lives system
     this.hairTooLong();
@@ -359,6 +456,9 @@ class Game {
     });
     this.bombArray.forEach((eachBomb) => {
       eachBomb.draw();
+    });
+    this.trimmerArray.forEach((eachTrimmer) => {
+      eachTrimmer.draw();
     });
 
     //* 4. Recursion ( requestAnimationFrame )

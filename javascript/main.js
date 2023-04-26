@@ -38,6 +38,7 @@ const beardWarningDOM = document.querySelector(".warning-shave"); // warning ele
 
 let gravitySpeed = 3; // Falling speed
 let isGameOn = true;
+let canMoveAgain = true;
 
 let gameObj;
 
@@ -150,11 +151,27 @@ autoDifficultyBtnDOM.addEventListener("click", () => {
 
 // Customer movement
 window.addEventListener("keydown", (event) => {
-  if (gameObj !== undefined && event.code === "ArrowLeft") {
+  if (
+    gameObj !== undefined &&
+    canMoveAgain === true &&
+    event.code === "ArrowLeft"
+  ) {
     //gameObj.customer.moveLeft();
+    canMoveAgain = false;
+    setTimeout(() => {
+      canMoveAgain = true;
+    }, 100);
     gameObj.customer.moveLeftFlow2();
-  } else if (gameObj !== undefined && event.code === "ArrowRight") {
+  } else if (
+    gameObj !== undefined &&
+    canMoveAgain === true &&
+    event.code === "ArrowRight"
+  ) {
     //gameObj.customer.moveRight();
+    canMoveAgain = false;
+    setTimeout(() => {
+      canMoveAgain = true;
+    }, 100);
     gameObj.customer.moveRightFlow2();
   }
 });

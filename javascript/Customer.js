@@ -172,6 +172,21 @@ class Customer {
     }
   };
 
+  // Move without flow - to use it uncomment the event listener in main and comment the this.customer.moveRightFlow(); in the gameLoop
+  moveRight = () => {
+    if (this.x < canvas.width - 110 && isGameOn === true) {
+      this.x += this.movementSpeed;
+      this.xBeard1 += this.movementSpeed;
+      this.xBeard2 += this.movementSpeed;
+      this.xBeard3 += this.movementSpeed;
+      this.xBeard4 += this.movementSpeed;
+      this.xHair1 += this.movementSpeed;
+      this.xHair2 += this.movementSpeed;
+      this.xHair3 += this.movementSpeed;
+      this.xHair4 += this.movementSpeed;
+    }
+  };
+
   moveLeftFlow = () => {
     if (this.isMovingLeft === true && this.x > 10 && isGameOn === true) {
       this.x -= this.movementSpeedFlow;
@@ -218,25 +233,10 @@ class Customer {
     }, 100);
   };
 
-  // Move without flow - to use it uncomment the event listener in main and comment the this.customer.moveRightFlow(); in the gameLoop
-  moveRight = () => {
-    if (this.x < canvas.width - 110 && isGameOn === true) {
-      this.x += this.movementSpeed;
-      this.xBeard1 += this.movementSpeed;
-      this.xBeard2 += this.movementSpeed;
-      this.xBeard3 += this.movementSpeed;
-      this.xBeard4 += this.movementSpeed;
-      this.xHair1 += this.movementSpeed;
-      this.xHair2 += this.movementSpeed;
-      this.xHair3 += this.movementSpeed;
-      this.xHair4 += this.movementSpeed;
-    }
-  };
-
   growBeard = () => {
     // Each second should grow
     setInterval(() => {
-      if (this.beardCounter >= 0 && this.beardCounter < this.maxGrowLength) {
+      if (this.beardCounter >= 0 && this.beardCounter < this.maxGrowLength && isGameOn === true) {
         this.beardCounter++;
       }
     }, this.growSpeed);
@@ -245,7 +245,7 @@ class Customer {
   growHair = () => {
     // Each second should grow
     setInterval(() => {
-      if (this.hairCounter >= 0 && this.hairCounter < this.maxGrowLength) {
+      if (this.hairCounter >= 0 && this.hairCounter < this.maxGrowLength && isGameOn === true) {
         this.hairCounter++;
       }
     }, this.growSpeed);

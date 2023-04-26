@@ -178,7 +178,7 @@ body {
 
 #instructions {
   position: relative;
-  top: -660px;
+  top: -690px;
 }
 
 #instructions p {
@@ -189,7 +189,7 @@ body {
 
 .p1,
 .p2,
-.p3 {
+.p3, .p4 {
   font-size: 20px;
   text-align: center;
 }
