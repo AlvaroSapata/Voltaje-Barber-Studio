@@ -4,7 +4,7 @@ class Game {
 
     // background
     this.background = new Image();
-    this.background.src = "images/LogoBackground.png";
+    this.background.src = "images/CanvasBackground600x1000.jpg";
 
     // Customer
     this.customer = new Customer();
@@ -243,6 +243,10 @@ class Game {
     } else {
       hairWarningDOM.style.opacity = 0;
     }
+  };
+
+  oopsDrawer = () => {
+    //todo poner que lo dibuje siempre y cuando se produzca le cambio la opacidad a 1?
   };
 
   gameOver = () => {

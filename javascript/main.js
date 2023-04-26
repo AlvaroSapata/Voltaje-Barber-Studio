@@ -109,16 +109,16 @@ playPauseBtnDOM.addEventListener("click", () => {
 });
 difficultyBtnDOM.addEventListener('click', () => {
   if (gravitySpeed === 3) {
-    gravitySpeed = 3.5;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 2 -';
-  } else if (gravitySpeed === 3.5) {
     gravitySpeed = 4;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 3 -';
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 2 -';
   } else if (gravitySpeed === 4) {
-    gravitySpeed = 4.5;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 4 -';
-  } else if (gravitySpeed === 4.5) {
     gravitySpeed = 5;
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 3 -';
+  } else if (gravitySpeed === 5) {
+    gravitySpeed = 6;
+    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 4 -';
+  } else if (gravitySpeed === 6) {
+    gravitySpeed = 7;
     difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 5 -';
   } else {
     gravitySpeed = 3;
