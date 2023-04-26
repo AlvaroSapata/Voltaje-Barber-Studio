@@ -8,7 +8,7 @@ const canvas = document.querySelector("#my-canvas"); // Canvas
 const ctx = canvas.getContext("2d"); // Canvas tools
 
 const audio = document.querySelector("#bcg-song"); // Background song
-audio.volume = 0.05;
+audio.volume = 0.05; // Background song volume
 
 const startBtnDOM = document.querySelector("#start-btn"); // Start button
 const restartBtnDOM = document.querySelector("#restart-btn"); // Restart button
@@ -19,7 +19,7 @@ let isMuted = false;
 
 const playPauseBtnDOM = document.querySelector("#play-pause"); // Play - pause the game button
 
-const difficultyBtnDOM = document.querySelector('#difficulty-button');
+const difficultyBtnDOM = document.querySelector("#difficulty-button");
 
 const scissorsScoreDOM = document.querySelector(".scissors-counter"); // Number of scissors collected
 const razorsScoreDOM = document.querySelector(".razors-counter"); // Number of razors collected
@@ -40,7 +40,7 @@ let gameObj;
 
 //* STATE MANAGEMENT FUNCTIONS
 
-const goToInstructions = () => { 
+const goToInstructions = () => {
   // 1. Swap screens
   splashScreenDOM.style.display = "none"; // Hides splash
   instructionsScreenDOM.style.display = "flex"; // Shows info
@@ -53,8 +53,8 @@ const startGame = () => {
   canvas.style.display = "flex"; // Shows canvas
   scoresScreenDOM.style.display = "flex"; // Show scores
   gameOverScreenDOM.style.display = "none"; // Hide gameover
-  playPauseBtnDOM.style.display = "flex" // Show pause button
-  difficultyBtnDOM.style.display = "flex" // Show difficulty button
+  playPauseBtnDOM.style.display = "flex"; // Show pause button
+  difficultyBtnDOM.style.display = "flex"; // Show difficulty button
 
   // 2. Create game element
   gameObj = new Game();
@@ -70,8 +70,8 @@ const restartGame = () => {
   gameOverScreenDOM.style.display = "none";
   canvas.style.display = "block";
   scoresScreenDOM.style.display = "flex"; // Show scores
-  playPauseBtnDOM.style.display = "flex" // Show pause button
-  difficultyBtnDOM.style.display = "flex" // Show difficulty button
+  playPauseBtnDOM.style.display = "flex"; // Show pause button
+  difficultyBtnDOM.style.display = "flex"; // Show difficulty button
   // Reset DOM elements
   life3ImageDOM.src = "images/heart.png";
   life2ImageDOM.src = "images/heart.png";
@@ -98,39 +98,56 @@ instructionsBtnDOM.addEventListener("click", goToInstructions);
 startBtnDOM.addEventListener("click", startGame);
 restartBtnDOM.addEventListener("click", restartGame);
 playPauseBtnDOM.addEventListener("click", () => {
-  if (isGameOn === true){
+  if (isGameOn === true) {
     isGameOn = false;
-    playPauseBtnDOM.innerHTML = `- Click to Resume -<img src="images/play.png" alt="play">`
-  }else{
+    playPauseBtnDOM.innerHTML = `- Click to Resume -<img src="images/play.png" alt="play">`;
+  } else {
     isGameOn = true;
-    playPauseBtnDOM.innerHTML = `- Click to Pause -<img src="images/pause.png" alt="pause">`
+    playPauseBtnDOM.innerHTML = `- Click to Pause -<img src="images/pause.png" alt="pause">`;
     gameObj.gameLoop(); // Volver a llamar a gameLoop
-  } 
+  }
 });
-difficultyBtnDOM.addEventListener('click', () => {
+difficultyBtnDOM.addEventListener("click", () => {
   if (gravitySpeed === 3) {
     gravitySpeed = 4;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 2 -';
+    difficultyBtnDOM.innerHTML =
+      "- Click to Change Difficulty -<br>- Level 2 -";
   } else if (gravitySpeed === 4) {
     gravitySpeed = 5;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 3 -';
+    difficultyBtnDOM.innerHTML =
+      "- Click to Change Difficulty -<br>- Level 3 -";
   } else if (gravitySpeed === 5) {
     gravitySpeed = 6;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 4 -';
+    difficultyBtnDOM.innerHTML =
+      "- Click to Change Difficulty -<br>- Level 4 -";
   } else if (gravitySpeed === 6) {
     gravitySpeed = 7;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 5 -';
+    difficultyBtnDOM.innerHTML =
+      "- Click to Change Difficulty -<br>- Level 5 -";
   } else {
     gravitySpeed = 3;
-    difficultyBtnDOM.innerHTML = '- Click to Change Difficulty -<br>- Level 1 -';
+    difficultyBtnDOM.innerHTML =
+      "- Click to Change Difficulty -<br>- Level 1 -";
   }
 });
 
 // Customer movement
 window.addEventListener("keydown", (event) => {
   if (gameObj !== undefined && event.code === "ArrowLeft") {
-    gameObj.customer.moveLeft();
+    //gameObj.customer.moveLeft();
+    gameObj.customer.moveLeftFlow2();
   } else if (gameObj !== undefined && event.code === "ArrowRight") {
-    gameObj.customer.moveRight();
+    //gameObj.customer.moveRight();
+    gameObj.customer.moveRightFlow2();
+  }
+});
+
+window.addEventListener("touchstart", (event) => {
+  const touchX = event.touches[0].clientX; // Obtener la posición X del toque
+  const screenWidth = window.innerWidth;
+  if (gameObj !== undefined && touchX < screenWidth / 2) {
+    gameObj.customer.moveLeftFlow2(); // Toque en el lado izquierdo de la pantalla
+  } else {
+    gameObj.customer.moveRightFlow2(); // Toque en el lado derecho de la pantalla
   }
 });

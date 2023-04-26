@@ -7,9 +7,13 @@ class Customer {
     this.y = 475; // Y position
     this.w = 80; // Width
     this.h = 100; // Height
-    this.movementSpeed = 30; // Movement speed of the customer
     this.growSpeed = 2000; // Growing speed
     this.maxGrowLength = 5; // Maximun to start losing lives
+    this.movementSpeed = 30; // Movement speed of the customer ( NO FLOW MOVEMENT)
+    this.movementSpeedFlow = 8; // Movement speed of the customer ( FLOW MOVEMENT )
+    this.isMovingLeft = false; // Check to move
+    this.canMoveLeft = true;
+    this.isMovingRight = false; // Check to move
 
     // Beards
     this.beardCounter = 0;
@@ -152,6 +156,8 @@ class Customer {
     } else {
     }
   };
+
+  // Move without flow - to use it uncomment the event listener in main and comment the this.customer.moveLeftFlow(); in the gameLoop
   moveLeft = () => {
     if (this.x > 10 && isGameOn === true) {
       this.x -= this.movementSpeed;
@@ -165,7 +171,54 @@ class Customer {
       this.xHair4 -= this.movementSpeed;
     }
   };
-  
+
+  moveLeftFlow = () => {
+    if (this.isMovingLeft === true && this.x > 10 && isGameOn === true) {
+      this.x -= this.movementSpeedFlow;
+      this.xBeard1 -= this.movementSpeedFlow;
+      this.xBeard2 -= this.movementSpeedFlow;
+      this.xBeard3 -= this.movementSpeedFlow;
+      this.xBeard4 -= this.movementSpeedFlow;
+      this.xHair1 -= this.movementSpeedFlow;
+      this.xHair2 -= this.movementSpeedFlow;
+      this.xHair3 -= this.movementSpeedFlow;
+      this.xHair4 -= this.movementSpeedFlow;
+    }
+  };
+
+  moveLeftFlow2 = () => {
+    this.isMovingLeft = true;
+    setTimeout(() => {
+      this.isMovingLeft = false;
+    }, 100);
+  };
+
+  moveRightFlow = () => {
+    if (
+      this.isMovingRight === true &&
+      this.x < canvas.width - 110 &&
+      isGameOn === true
+    ) {
+      this.x += this.movementSpeedFlow;
+      this.xBeard1 += this.movementSpeedFlow;
+      this.xBeard2 += this.movementSpeedFlow;
+      this.xBeard3 += this.movementSpeedFlow;
+      this.xBeard4 += this.movementSpeedFlow;
+      this.xHair1 += this.movementSpeedFlow;
+      this.xHair2 += this.movementSpeedFlow;
+      this.xHair3 += this.movementSpeedFlow;
+      this.xHair4 += this.movementSpeedFlow;
+    }
+  };
+
+  moveRightFlow2 = () => {
+    this.isMovingRight = true;
+    setTimeout(() => {
+      this.isMovingRight = false;
+    }, 100);
+  };
+
+  // Move without flow - to use it uncomment the event listener in main and comment the this.customer.moveRightFlow(); in the gameLoop
   moveRight = () => {
     if (this.x < canvas.width - 110 && isGameOn === true) {
       this.x += this.movementSpeed;

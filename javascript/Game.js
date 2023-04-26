@@ -297,6 +297,9 @@ class Game {
       eachBomb.gravity();
     });
 
+    this.customer.moveLeftFlow();
+    this.customer.moveRightFlow();
+
     // Check collisions
     this.checkColisionCustomerScissor();
     this.checkColisionCustomerRazor();
