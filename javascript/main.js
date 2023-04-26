@@ -32,6 +32,7 @@ const life3ImageDOM = document.querySelector(".life-3");
 
 const scoreDOM = document.querySelector(".score-points"); // Score
 const finalScoreDOM = document.querySelector(".final-score"); // Score in gameover screen
+const highScoreDOM = document.querySelector(".highScore"); // Highscore
 const hairWarningDOM = document.querySelector(".warning-cut"); // warning element
 const beardWarningDOM = document.querySelector(".warning-shave"); // warning element
 

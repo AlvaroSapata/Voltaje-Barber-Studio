@@ -263,13 +263,13 @@ class Game {
 
   autoIncreaseDifficulty = () => {
     if (isAutoIncreaseOn === true) {
-      if (this.score >= 25 && this.score <50) {
+      if (this.score >= 25 && this.score < 50) {
         gravitySpeed = 4;
-      } else if (this.score >= 50 && this.score <75) {
+      } else if (this.score >= 50 && this.score < 75) {
         gravitySpeed = 5;
-      } else if (this.score >= 75 && this.score <100) {
+      } else if (this.score >= 75 && this.score < 100) {
         gravitySpeed = 6;
-      } else if (this.score >= 100 && this.score <125) {
+      } else if (this.score >= 100 && this.score < 125) {
         gravitySpeed = 7;
       } else if (this.score >= 125) {
         gravitySpeed = 8;
@@ -279,9 +279,19 @@ class Game {
     }
   };
 
+  updateHighScore = () => {
+    let actualScore = this.score;
+    // Get the highscore from the local storage
+    let highScore = localStorage.getItem("highscore");
+    // Check whether the actual score is higher, and if so set it as the new highscore
+    if (actualScore > parseInt(highScore || highScore === null)) {
+      localStorage.setItem("highscore", actualScore.toString());
+    }
+    highScoreDOM.innerText = `- The Highscore is: ${highScore} -`;
+  };
+
   gameOver = () => {
     // 1. Stop the game
-    //this.isGameOn = false;
     isGameOn = false;
     // 2. Hide canvas
     canvas.style.display = "none";
@@ -292,6 +302,9 @@ class Game {
 
     // 3. Show game over screen
     gameOverScreenDOM.style.display = "flex";
+
+    // 4. Update Highscore
+    this.updateHighScore();
   };
 
   gameLoop = () => {
