@@ -2,7 +2,11 @@ class Razor {
   constructor(randomRazorsPosition) {
     // ELEMENTS AND INITIAL VALUES OF THE RAZOR
     this.img = new Image();
-    this.img.src = "images/razor.png";
+    if (isDarkMode === true) {
+      this.img.src = "images/dark/razor.png";
+    } else {
+      this.img.src = "images/razor.png";
+    }
     this.x = randomRazorsPosition; // X position
     this.w = 80; // Width
     this.h = (5 / 5) * this.w; // Height referenced to width

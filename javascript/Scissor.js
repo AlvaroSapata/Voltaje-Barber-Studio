@@ -2,7 +2,11 @@ class Scissor {
   constructor(randomScissorsPosition) {
     // ELEMENTS AND INITIAL VALUES OF THE SCISSORS
     this.img = new Image();
-    this.img.src = "images/ScissorsDown.png";
+    if (isDarkMode === true) {
+      this.img.src = "images/dark/ScissorDown.png";
+    } else {
+      this.img.src = "images/ScissorsDown.png";
+    }
     this.x = randomScissorsPosition; // X position
     this.w = 80; // Width
     this.h = (5 / 5) * this.w; // Height referenced to width

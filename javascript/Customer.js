@@ -2,7 +2,12 @@ class Customer {
   constructor() {
     // ELEMENTS AND INITIAL VALUES OF CUSTOMER
     this.img = new Image();
-    this.img.src = "images/Face.png";
+    if ( isDarkMode === true){
+      this.img.src = "images/dark/face.png";
+    } else {
+      this.img.src = "images/Face.png";
+    };
+    
     this.x = 460; // X position
     this.y = 475; // Y position
     this.w = 80; // Width
@@ -19,28 +24,52 @@ class Customer {
     this.beardCounter = 0;
 
     this.imgBeard1 = new Image();
-    this.imgBeard1.src = "images/beard1.png";
+    if ( isDarkMode === true){
+      this.imgBeard1.src = "images/dark/beard1.png";
+
+    } else {
+      this.imgBeard1.src = "images/beard1.png";
+
+    };
     this.xBeard1 = 470; // X position
     this.yBeard1 = 515; // Y position
     this.wBeard1 = 60; // Width
     this.hBeard1 = 60; // Height
 
     this.imgBeard2 = new Image();
-    this.imgBeard2.src = "images/beard2.png";
+    if ( isDarkMode === true){
+      this.imgBeard2.src = "images/dark/beard2.png";
+
+    } else {
+      this.imgBeard2.src = "images/beard2.png";
+
+    };
     this.xBeard2 = 470; // X position
     this.yBeard2 = 525; // Y position
     this.wBeard2 = 60; // Width
     this.hBeard2 = 60; // Height
 
     this.imgBeard3 = new Image();
-    this.imgBeard3.src = "images/beard3.png";
+    if ( isDarkMode === true){
+      this.imgBeard3.src = "images/dark/beard3.png";
+
+    } else {
+      this.imgBeard3.src = "images/beard3.png";
+
+    };
     this.xBeard3 = 465; // X position
     this.yBeard3 = 520; // Y position
     this.wBeard3 = 70; // Width
     this.hBeard3 = 70; // Height
 
     this.imgBeard4 = new Image();
-    this.imgBeard4.src = "images/beard4.png";
+    if ( isDarkMode === true){
+      this.imgBeard4.src = "images/dark/beard4.png";
+
+    } else {
+      this.imgBeard4.src = "images/beard4.png";
+
+    };
     this.xBeard4 = 460; // X position
     this.yBeard4 = 525; // Y position
     this.wBeard4 = 80; // Width
@@ -50,28 +79,52 @@ class Customer {
     this.hairCounter = 0;
 
     this.imgHair1 = new Image();
-    this.imgHair1.src = "images/hair1.png";
+    if ( isDarkMode === true){
+      this.imgHair1.src = "images/dark/hair1.png";
+
+    } else {
+      this.imgHair1.src = "images/hair1.png";
+
+    };
     this.xHair1 = 460; // X position
     this.yHair1 = 448; // Y position
     this.wHair1 = 87; // Width
     this.hHair1 = 90; // Height
 
     this.imgHair2 = new Image();
-    this.imgHair2.src = "images/hair2.png";
+    if ( isDarkMode === true){
+      this.imgHair2.src = "images/dark/hair2.png";
+
+    } else {
+      this.imgHair2.src = "images/hair2.png";
+
+    };
     this.xHair2 = 448; // X position
     this.yHair2 = 470; // Y position
     this.wHair2 = 100; // Width
     this.hHair2 = 90; // Height
 
     this.imgHair3 = new Image();
-    this.imgHair3.src = "images/hair3.png";
+    if ( isDarkMode === true){
+      this.imgHair3.src = "images/dark/hair3.png";
+
+    } else {
+      this.imgHair3.src = "images/hair3.png";
+
+    };
     this.xHair3 = 452; // X position
     this.yHair3 = 463; // Y position
     this.wHair3 = 95; // Width
     this.hHair3 = 90; // Height
 
     this.imgHair4 = new Image();
-    this.imgHair4.src = "images/hair4.png";
+    if ( isDarkMode === true){
+      this.imgHair4.src = "images/dark/hair4.png";
+
+    } else {
+      this.imgHair4.src = "images/hair4.png";
+
+    };
     this.xHair4 = 435; // X position
     this.yHair4 = 475; // Y position
     this.wHair4 = 130; // Width

@@ -43,7 +43,7 @@ body {
 
 #play-pause {
   position: fixed;
-  top: 80px;
+  top: 150px;
   right: 12px;
   width: 248px;
   height: 58px;
@@ -69,7 +69,7 @@ body {
 
 #difficulty-button {
   position: fixed;
-  top: 223px;
+  top: 290px;
   right: 12px;
   width: 248px;
   height: 58px;
@@ -89,7 +89,7 @@ body {
 }
 #auto-difficulty-button {
   position: fixed;
-  top: 151px;
+  top: 220px;
   right: 12px;
   width: 248px;
   height: 58px;
@@ -115,6 +115,27 @@ body {
   margin-right: 10px;
 }
 
+#toggle-themes {
+  position: fixed;
+  top: 80px;
+  right: 12px;
+  width: 248px;
+  height: 58px;
+  z-index: 1;
+  background-image: url("../images/LogoBackground.png");
+  /*   background-color: transparent; */
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 30px;
+  border-width: 4px;
+}
+
 /* Splash Screen ___________________________________________________ */
 
 #img-bcg {
@@ -129,7 +150,6 @@ body {
   top: -700px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  color: black;
   padding: 320px 250px;
   font-size: 20px;
   border-radius: 10px;
@@ -161,7 +181,6 @@ body {
   top: 50px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  color: black;
   padding: 350px 400px;
   font-size: 20px;
   border-radius: 10px;
@@ -172,7 +191,6 @@ body {
 #instructions-screen {
   display: none; /* Hide screen */
   justify-content: center;
-  color: black;
   font-weight: bold;
 }
 
@@ -189,7 +207,8 @@ body {
 
 .p1,
 .p2,
-.p3, .p4 {
+.p3,
+.p4 {
   font-size: 20px;
   text-align: center;
 }
@@ -246,14 +265,11 @@ body {
   /*   background-color: transparent; */
 }
 
-
-
 #canvas-div {
   display: none; /* Hide screen */
 }
 
 #score-screens {
-  color: black;
   display: none;
   flex-direction: row;
   margin-top: 0px;
@@ -292,7 +308,6 @@ body {
 }
 
 .warning-shave {
-  color: black;
   display: flex;
   flex-direction: row;
   font-size: 20px;
@@ -303,7 +318,6 @@ body {
 }
 
 .warning-cut {
-  color: black;
   display: flex;
   flex-direction: row;
   font-size: 20px;
@@ -314,7 +328,6 @@ body {
 }
 
 #score-screens .scores {
-  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -335,7 +348,6 @@ body {
   top: -970px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  color: black;
   padding: 300px 320px;
   font-size: 20px;
   border-radius: 10px;
@@ -353,7 +365,6 @@ body {
 #gameover-screen {
   display: none; /* Hide screen */
   justify-content: center;
-  color: black;
   font-family: "Roboto", sans-serif;
 }
 
@@ -369,7 +380,6 @@ body {
 }
 
 #gameover-screen .thanks {
-  color: black;
   font-size: 35px;
   top: -680px;
 }

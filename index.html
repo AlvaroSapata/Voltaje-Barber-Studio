@@ -7,7 +7,7 @@
     <title>Voltaje Barber Studio</title>
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
-  <body>
+  <body id="body-theme">
     <audio
       id="bcg-song"
       controls="controls"
@@ -16,9 +16,10 @@
     >
       <source src="audio/PurpleNoise.mp3" />
     </audio>
-    <button id="play-pause"><p>- Click to Pause -</p><img src="images/pause.png" alt="pause"></button>
+    <button id="play-pause"><p>- Click to Pause -</p><img class="play-pause-img" src="images/pause.png" alt="pause"></button>
     <button id="difficulty-button">- Click to Change Difficulty -<br>- Level 1 -</button>
-    <button id="auto-difficulty-button">- Click to Activate -<br>- Auto Difficulty - <img src="images/x.png" alt="activate"></button>
+    <button id="auto-difficulty-button">- Click to Activate -<br>- Auto Difficulty - <img class="auto-difficulty-img" src="images/x.png" alt="activate"></button>
+    <button id="toggle-themes">- Click to go to Dark Theme -</button>
     <!-- SPLASH SCREEN -->
     <div id="splash-screen" class="container">
       <img
@@ -28,7 +29,7 @@
         alt="logo"
       />
       <button id="instructions-btn">
-        <p>- Click to see the Instructions -</p>
+        <p class="instructionsP">- Click to see the Instructions -</p>
       </button>
     </div>
 
@@ -51,13 +52,13 @@
         </p>
         <br />
         <div class="faces">
-          <img class="face" src="images/grown1.png" alt="" />
-          <img class="arrow" src="images/felcha-izda.png" alt="" />
-          <img class="face" src="images/grown2.png" alt="" />
-          <img class="arrow" src="images/felcha-izda.png" alt="" />
-          <img class="face" src="images/grown3.png" alt="" />
-          <img class="arrow" src="images/felcha-izda.png" alt="" />
-          <img class="face" src="images/grown4.png" alt="" />
+          <img class="face grown1" src="images/grown1.png" alt="" />
+          <img class="arrow arrow1" src="images/felcha-izda.png" alt="" />
+          <img class="face grown2" src="images/grown2.png" alt="" />
+          <img class="arrow arrow2" src="images/felcha-izda.png" alt="" />
+          <img class="face grown3" src="images/grown3.png" alt="" />
+          <img class="arrow arrow3" src="images/felcha-izda.png" alt="" />
+          <img class="face grown4" src="images/grown4.png" alt="" />
         </div>
         <p class="p3">
           - If you let your hair and beard grow too much you -<br />- will start
@@ -65,9 +66,9 @@
         </p>
         <br />
         <div class="hearts">
-          <img src="images/heart.png" alt="full" />
-          <img src="images/half-hear.png" alt="half" />
-          <img src="images/empty-heart.png" alt="empty" />
+          <img class="heartFull" src="images/heart.png" alt="full" />
+          <img class="heartHalf" src="images/half-hear.png" alt="half" />
+          <img class="heartEmpty" src="images/empty-heart.png" alt="empty" />
         </div>
         <br />
         <div class="trimmer"><p class="p4">- Pick a Trimmer to gain immunity to bombs and triple points -</p></div>
@@ -75,19 +76,19 @@
         <br />
         <div class="drawings">
           <div class="card">
-            <img src="images/ScissorsDown.png" alt="Scissor" />
+            <img class="imgScissors" src="images/ScissorsDown.png" alt="Scissor" />
             <p>+ 2 points</p>
           </div>
           <div class="card">
-            <img src="images/razor.png" alt="Razor" />
+            <img class="imgRazors" src="images/razor.png" alt="Razor" />
             <p>+ 1 points</p>
           </div>
           <div class="card">
-            <img src="images/bomba.png" alt="Bomb" />
+            <img class="imgBombs"src="images/bomba.png" alt="Bomb" />
             <p>- 1 life</p>
           </div>
           <div class="card">
-            <img src="images/trimmer.png" alt="Trimmer" />
+            <img class="imgTrimmers" src="images/trimmer.png" alt="Trimmer" />
             <p>Immunity!</p>
           </div>
         </div>
@@ -104,12 +105,12 @@
       <div id="score-screens">
         <!-- Warning shave -->
         <div class="warning-shave">
-          <img src="images/warning.png" alt="warning icon" />
+          <img class="warningShave-Icon-img" src="images/warning.png" alt="warning icon" />
           <p>You Should Shave!</p>
         </div>
         <!-- Razors counter -->
         <div class="shave-icon">
-          <img src="images/razor.png" alt="icon razor" />
+          <img class="razor-img" src="images/razor.png" alt="icon razor" />
           <p>x</p>
           <p class="razors-counter">0</p>
         </div>
@@ -125,13 +126,13 @@
         </div>
         <!-- Scissors counter -->
         <div class="cut-icon">
-          <img src="images/ScissorsDown.png" alt="icon scissors" />
+          <img class="scissor-img" src="images/ScissorsDown.png" alt="icon scissors" />
           <p>x</p>
           <p class="scissors-counter">0</p>
         </div>
         <!-- Warning cut -->
         <div class="warning-cut">
-          <img src="images/warning.png" alt="warning icon" />
+          <img class="warningCut-Icon-img" src="images/warning.png" alt="warning icon" />
           <p>You Should Cut Your Hair!</p>
         </div>
       </div>

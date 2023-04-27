@@ -2,9 +2,19 @@ class Game {
   constructor() {
     // ELEMENTS AND INITIAL VALUES OF THE GAME
 
+    /*   if ( isDarkMode === true){
+
+    } else {
+    
+    };       */
+
     // background
     this.background = new Image();
-    this.background.src = "images/CanvasBackground600x1000.jpg";
+    if (isDarkMode === true) {
+      this.background.src = "images/dark/canvas1000x600.jpg";
+    } else {
+      this.background.src = "images/CanvasBackground600x1000.jpg";
+    }
 
     // Customer
     this.customer = new Customer();
@@ -41,10 +51,19 @@ class Game {
   // METHODS OF THE GAME
   drawBackground = () => {
     ctx.drawImage(this.background, 0, 0, canvas.width, canvas.height);
-    ctx.fillRect(0, canvas.height - 4, canvas.width, 4);
-    ctx.fillRect(0, 0, canvas.width, 4);
-    ctx.fillRect(0, 0, 4, canvas.height);
-    ctx.fillRect(canvas.width - 4, 0, 4, canvas.height);
+    if ( isDarkMode === true){
+      ctx.fillStyle = "white"
+      ctx.fillRect(0, canvas.height - 4, canvas.width, 4);
+      ctx.fillRect(0, 0, canvas.width, 4);
+      ctx.fillRect(0, 0, 4, canvas.height);
+      ctx.fillRect(canvas.width - 4, 0, 4, canvas.height);
+    } else {
+      ctx.fillRect(0, canvas.height - 4, canvas.width, 4);
+      ctx.fillRect(0, 0, canvas.width, 4);
+      ctx.fillRect(0, 0, 4, canvas.height);
+      ctx.fillRect(canvas.width - 4, 0, 4, canvas.height);
+    };
+
   };
 
   clearCanvas = () => {
@@ -121,7 +140,12 @@ class Game {
           this.canLoseLifeHair = true;
           scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
           scoreDOM.innerText = `Score: ${this.score}`;
-          eachScissor.img.src = "images/ScissorsDownClosed.png"; // animation
+          if (isDarkMode === true) {
+            eachScissor.img.src = "images/dark/ScissorDownClosed.png"; // animation
+          } else {
+            eachScissor.img.src = "images/ScissorsDownClosed.png"; // animation
+          }
+
           eachScissor.canCollide = false;
           setTimeout(() => {
             this.scissorsArray.shift();
@@ -136,7 +160,12 @@ class Game {
           this.canLoseLifeHair = true;
           scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
           scoreDOM.innerText = `Score: ${this.score}`;
-          eachScissor.img.src = "images/ScissorsDownClosed.png";
+          if (isDarkMode === true) {
+            eachScissor.img.src = "images/dark/ScissorDownClosed.png"; // animation
+          } else {
+            eachScissor.img.src = "images/ScissorsDownClosed.png"; // animation
+          }
+
           eachScissor.canCollide = false;
           setTimeout(() => {
             this.scissorsArray.shift();
@@ -165,7 +194,11 @@ class Game {
           this.canLoseLifeBeard = true;
           razorsScoreDOM.innerText = `${this.razorsCounter}`;
           scoreDOM.innerText = `Score: ${this.score}`;
-          eachRazor.img.src = "images/razorClosed.png"; // animation
+          if (isDarkMode === true) {
+            eachRazor.img.src = "images/dark/razorClosed.png"; // animation
+          } else {
+            eachRazor.img.src = "images/razorClosed.png"; // animation
+          }
           eachRazor.canCollide = false;
           setTimeout(() => {
             this.razorArray.shift();
@@ -180,7 +213,11 @@ class Game {
           this.canLoseLifeBeard = true;
           razorsScoreDOM.innerText = `${this.razorsCounter}`;
           scoreDOM.innerText = `Score: ${this.score}`;
-          eachRazor.img.src = "images/razorClosed.png";
+          if (isDarkMode === true) {
+            eachRazor.img.src = "images/dark/razorClosed.png"; // animation
+          } else {
+            eachRazor.img.src = "images/razorClosed.png"; // animation
+          }
           eachRazor.canCollide = false;
           setTimeout(() => {
             this.razorArray.shift();
@@ -207,7 +244,11 @@ class Game {
           this.livesCounter();
           const ouchAudio = new Audio("audio/ouch.wav");
           ouchAudio.play();
-          eachBomb.img.src = "images/explosion2.png"; // animation
+          if (isDarkMode === true) {
+            eachBomb.img.src = "images/dark/explosion2.png"; // animation
+          } else {
+            eachBomb.img.src = "images/explosion2.png"; // animation
+          }
           eachBomb.canCollide = false;
           setTimeout(() => {
             this.bombArray.shift();
@@ -220,7 +261,11 @@ class Game {
           this.livesCounter();
           const ouchAudio = new Audio("audio/ouch.wav");
           ouchAudio.play();
-          eachBomb.img.src = "images/explosion2.png";
+          if (isDarkMode === true) {
+            eachBomb.img.src = "images/dark/explosion2.png"; // animation
+          } else {
+            eachBomb.img.src = "images/explosion2.png";
+          }
           eachBomb.canCollide = false;
           setTimeout(() => {
             this.bombArray.shift();
@@ -287,35 +332,68 @@ class Game {
       finalScoreDOM.innerText = `- You Scored ${this.score} points -`;
     }
     // Hearts
-    if (this.lives === 3) {
-      life3ImageDOM.src = "images/heart.png";
-      life2ImageDOM.src = "images/heart.png";
-      life1ImageDOM.src = "images/heart.png";
-    } else if (this.lives === 2.5) {
-      life3ImageDOM.src = "images/half-hear.png";
-      life2ImageDOM.src = "images/heart.png";
-      life1ImageDOM.src = "images/heart.png";
-    } else if (this.lives === 2) {
-      life3ImageDOM.src = "images/empty-heart.png";
-      life2ImageDOM.src = "images/heart.png";
-      life1ImageDOM.src = "images/heart.png";
-    } else if (this.lives === 1.5) {
-      life3ImageDOM.src = "images/empty-heart.png";
-      life2ImageDOM.src = "images/half-hear.png";
-      life1ImageDOM.src = "images/heart.png";
-    } else if (this.lives === 1) {
-      life3ImageDOM.src = "images/empty-heart.png";
-      life2ImageDOM.src = "images/empty-heart.png";
-      life1ImageDOM.src = "images/heart.png";
-    } else if (this.lives === 0.5) {
-      life3ImageDOM.src = "images/empty-heart.png";
-      life2ImageDOM.src = "images/empty-heart.png";
-      life1ImageDOM.src = "images/half-hear.png";
+    if ( isDarkMode === true){
+      if (this.lives === 3) {
+        life3ImageDOM.src = "images/dark/heart.png";
+        life2ImageDOM.src = "images/dark/heart.png";
+        life1ImageDOM.src = "images/dark/heart.png";
+      } else if (this.lives === 2.5) {
+        life3ImageDOM.src = "images/dark/half-heart.png";
+        life2ImageDOM.src = "images/dark/heart.png";
+        life1ImageDOM.src = "images/dark/heart.png";
+      } else if (this.lives === 2) {
+        life3ImageDOM.src = "images/dark/empty-heart.png";
+        life2ImageDOM.src = "images/dark/heart.png";
+        life1ImageDOM.src = "images/dark/heart.png";
+      } else if (this.lives === 1.5) {
+        life3ImageDOM.src = "images/dark/empty-heart.png";
+        life2ImageDOM.src = "images/dark/half-heart.png";
+        life1ImageDOM.src = "images/dark/heart.png";
+      } else if (this.lives === 1) {
+        life3ImageDOM.src = "images/dark/empty-heart.png";
+        life2ImageDOM.src = "images/dark/empty-heart.png";
+        life1ImageDOM.src = "images/dark/heart.png";
+      } else if (this.lives === 0.5) {
+        life3ImageDOM.src = "images/dark/empty-heart.png";
+        life2ImageDOM.src = "images/dark/empty-heart.png";
+        life1ImageDOM.src = "images/dark/half-heart.png";
+      } else {
+        life3ImageDOM.src = "images/dark/empty-heart.png";
+        life2ImageDOM.src = "images/dark/empty-heart.png";
+        life1ImageDOM.src = "images/dark/empty-heart.png";
+      }
     } else {
-      life3ImageDOM.src = "images/empty-heart.png";
-      life2ImageDOM.src = "images/empty-heart.png";
-      life1ImageDOM.src = "images/empty-heart.png";
-    }
+      if (this.lives === 3) {
+        life3ImageDOM.src = "images/heart.png";
+        life2ImageDOM.src = "images/heart.png";
+        life1ImageDOM.src = "images/heart.png";
+      } else if (this.lives === 2.5) {
+        life3ImageDOM.src = "images/half-hear.png";
+        life2ImageDOM.src = "images/heart.png";
+        life1ImageDOM.src = "images/heart.png";
+      } else if (this.lives === 2) {
+        life3ImageDOM.src = "images/empty-heart.png";
+        life2ImageDOM.src = "images/heart.png";
+        life1ImageDOM.src = "images/heart.png";
+      } else if (this.lives === 1.5) {
+        life3ImageDOM.src = "images/empty-heart.png";
+        life2ImageDOM.src = "images/half-hear.png";
+        life1ImageDOM.src = "images/heart.png";
+      } else if (this.lives === 1) {
+        life3ImageDOM.src = "images/empty-heart.png";
+        life2ImageDOM.src = "images/empty-heart.png";
+        life1ImageDOM.src = "images/heart.png";
+      } else if (this.lives === 0.5) {
+        life3ImageDOM.src = "images/empty-heart.png";
+        life2ImageDOM.src = "images/empty-heart.png";
+        life1ImageDOM.src = "images/half-hear.png";
+      } else {
+        life3ImageDOM.src = "images/empty-heart.png";
+        life2ImageDOM.src = "images/empty-heart.png";
+        life1ImageDOM.src = "images/empty-heart.png";
+      }
+    };
+    
   };
 
   canLoseLifeChecker = () => {

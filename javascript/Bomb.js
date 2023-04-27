@@ -2,7 +2,13 @@ class Bomb {
   constructor(randomBombsPosition) {
     // ELEMENTS AND INITIAL VALUES OF THE BOMB
     this.img = new Image();
-    this.img.src = "images/bomba.png";
+    if ( isDarkMode === true){
+      this.img.src = "images/dark/bomba.png";
+
+    } else {
+      this.img.src = "images/bomba.png";
+
+    };
     this.x = randomBombsPosition; // X position
     this.w = 60; // Width
     this.h = (5 / 5) * this.w; // Height referenced to width

@@ -2,7 +2,11 @@ class Trimmer {
   constructor(randomTrimmersPosition) {
     // ELEMENTS AND INITIAL VALUES OF THE TRIMMER
     this.img = new Image();
-    this.img.src = "images/trimmer.png";
+    if (isDarkMode === true) {
+      this.img.src = "images/dark/trimmer.png";
+    } else {
+      this.img.src = "images/trimmer.png";
+    }
     this.x = randomTrimmersPosition; // X position
     this.w = 60; // Width
     this.h = (5 / 5) * this.w; // Height referenced to width
