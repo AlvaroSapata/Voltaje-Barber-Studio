@@ -385,32 +385,3 @@ toggleThemeDOM.addEventListener("click", () => {
   isDarkMode = !isDarkMode;
   toggleTheme();
 });
-
-//* Just to test how would react on a phone
-
-/* window.addEventListener("touchstart", (event) => {
-  // Get the touch position with clientX
-  const touchX = event.touches[0].clientX;
-  // Get the layout width
-  const screenWidth = window.innerWidth;
-  // Checks whether is a touch on the right side or in the left
-  if (gameObj !== undefined && touchX < screenWidth / 2) {
-    gameObj.customer.moveLeftFlow2();
-  } else {
-    gameObj.customer.moveRightFlow2();
-  }
-});
-
-let lastTouchEnd = 0;
-window.addEventListener(
-  "touchend",
-  (event) => {
-    const now = new Date().getTime();
-    if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
-    }
-    lastTouchEnd = now;
-  },
-  false
-);
- */
