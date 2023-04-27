@@ -146,7 +146,7 @@ class Game {
             this.scissorsArray.shift();
           }, 100);
         } else {
-          this.score += this.hairScore * 5;
+          this.score += this.hairScore;
           const scissorAudio = new Audio("audio/scissors.wav");
           scissorAudio.volume = 0.7;
           scissorAudio.play();
@@ -199,7 +199,7 @@ class Game {
             this.razorArray.shift();
           }, 100);
         } else {
-          this.score += this.beardScore * 7;
+          this.score += this.beardScore ;
           const razorAudio = new Audio("audio/razor.wav");
           razorAudio.volume = 0.4;
           razorAudio.play();
