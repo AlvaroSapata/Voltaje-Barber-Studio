@@ -286,7 +286,7 @@ class Game {
         this.trimmerArray.shift();
         setTimeout(() => {
           const immunityAudio = new Audio("audio/Immune5sec.mp3");
-          immunityAudio.volume = 0.6;
+          immunityAudio.volume = 0.4;
           immunityAudio.play();
         }, 50);
         setTimeout(() => {
