@@ -8,7 +8,7 @@ const canvas = document.querySelector("#my-canvas"); // Canvas
 const ctx = canvas.getContext("2d"); // Canvas tools
 
 const audio = document.querySelector("#bcg-song"); // Background song
-audio.volume = 0.04; // Background song volume
+audio.volume = 0.05; // Background song volume
 
 const startBtnDOM = document.querySelector("#start-btn"); // Start button
 const restartBtnDOM = document.querySelector("#restart-btn"); // Restart button

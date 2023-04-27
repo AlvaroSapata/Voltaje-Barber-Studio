@@ -128,7 +128,7 @@ class Game {
         if (this.isImmune === true) {
           this.score += this.hairScore * 3; // if imune, triple score
           const scissorAudio = new Audio("audio/scissors.wav");
-          scissorAudio.volume = 0.8;
+          scissorAudio.volume = 0.7;
           scissorAudio.play();
           this.scissorsCounter += 1;
           this.customer.cutHair();
@@ -148,7 +148,7 @@ class Game {
         } else {
           this.score += this.hairScore * 5;
           const scissorAudio = new Audio("audio/scissors.wav");
-          scissorAudio.volume = 0.8;
+          scissorAudio.volume = 0.7;
           scissorAudio.play();
           this.scissorsCounter += 1;
           this.customer.cutHair();
@@ -182,7 +182,7 @@ class Game {
         if (this.isImmune === true) {
           this.score += this.beardScore * 3; // if imune, triple score
           const razorAudio = new Audio("audio/razor.wav");
-          razorAudio.volume = 0.6;
+          razorAudio.volume = 0.4;
           razorAudio.play();
           this.razorsCounter += 1;
           this.customer.shaveBeard();
@@ -201,7 +201,7 @@ class Game {
         } else {
           this.score += this.beardScore * 7;
           const razorAudio = new Audio("audio/razor.wav");
-          razorAudio.volume = 0.6;
+          razorAudio.volume = 0.4;
           razorAudio.play();
           this.razorsCounter += 1;
           this.customer.shaveBeard();
@@ -234,7 +234,7 @@ class Game {
         if (this.isImmune === true) {
           // if immune doesnt lose life
           const bombAudio = new Audio("audio/bang.wav");
-          bombAudio.volume = 0.04;
+          bombAudio.volume = 0.05;
           bombAudio.play();
           this.livesCounter();
           const ouchAudio = new Audio("audio/ouch.wav");
@@ -251,7 +251,7 @@ class Game {
         } else {
           this.lives -= 1;
           const bombAudio = new Audio("audio/bang.wav");
-          bombAudio.volume = 0.04;
+          bombAudio.volume = 0.05;
           bombAudio.play();
           this.livesCounter();
           const ouchAudio = new Audio("audio/ouch.wav");
@@ -280,7 +280,7 @@ class Game {
         eachTrimmer.h + eachTrimmer.y > this.customer.y
       ) {
         const trimmerAudio = new Audio("audio/trimmer.wav");
-        trimmerAudio.volume = 0.7;
+        trimmerAudio.volume = 0.8;
         trimmerAudio.play();
         this.isImmune = true;
         this.trimmerArray.shift();
