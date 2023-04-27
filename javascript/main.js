@@ -388,7 +388,7 @@ toggleThemeDOM.addEventListener("click", () => {
 
 //* Just to test how would react on a phone
 
-window.addEventListener("touchstart", (event) => {
+/* window.addEventListener("touchstart", (event) => {
   // Get the touch position with clientX
   const touchX = event.touches[0].clientX;
   // Get the layout width
@@ -413,3 +413,4 @@ window.addEventListener(
   },
   false
 );
+ */
