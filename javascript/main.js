@@ -148,11 +148,11 @@ const restartGame = () => {
 const toggleTheme = () => {
   if (isDarkMode === true) {
     toggleThemeDOM.innerText = "- Click to go to Light Mode -";
-    bodyDOM.style.backgroundImage = "url(../images/dark/LogoBackground.png)";
+    bodyDOM.style.backgroundImage = "url(images/dark/LogoBackground.png)";
     bodyDOM.style.color = "white";
     // SPLASH
     imgBcg.style.border = "4px solid white";
-    imgBcg.src = "../images/dark/VoltajeBarberStudio.png";
+    imgBcg.src = "images/dark/VoltajeBarberStudio.png";
     textBtn.style.color = "white";
     // INSTRUCTIONS
     imageInfo.src = "images/dark/LogoBackground.png";
@@ -181,26 +181,26 @@ const toggleTheme = () => {
     scissorImg.src = "images/dark/ScissorDown.png";
     warningCutImg.src = "images/dark/warning.png";
     // GAME OVER
-    imgGameOver.src = "../images/dark/VoltajeBarberStudio.png";
+    imgGameOver.src = "images/dark/VoltajeBarberStudio.png";
     imgGameOver.style.borderColor = "white";
     textBtnGameover.style.color = "white";
     // BUTTONS
     toggleThemeDOM.style.color = "white";
     toggleThemeDOM.style.border = "4px solid white";
     toggleThemeDOM.style.backgroundImage =
-      "url(../images/dark/LogoBackground.png)";
+      "url(images/dark/LogoBackground.png)";
     playPauseBtnDOM.style.color = "white";
     playPauseBtnDOM.style.border = "4px solid white";
     playPauseBtnDOM.style.backgroundImage =
-      "url(../images/dark/LogoBackground.png)";
+      "url(images/dark/LogoBackground.png)";
     difficultyBtnDOM.style.color = "white";
     difficultyBtnDOM.style.border = "4px solid white";
     difficultyBtnDOM.style.backgroundImage =
-      "url(../images/dark/LogoBackground.png)";
+      "url(images/dark/LogoBackground.png)";
     autoDifficultyBtnDOM.style.color = "white";
     autoDifficultyBtnDOM.style.border = "4px solid white";
     autoDifficultyBtnDOM.style.backgroundImage =
-      "url(../images/dark/LogoBackground.png)";
+      "url(images/dark/LogoBackground.png)";
     if (isGameOn === true) {
       playPauseBtnDOM.innerHTML = `- Click to Pause -<img src="images/dark/pause.png" alt="play">`;
     } else {
@@ -213,11 +213,11 @@ const toggleTheme = () => {
     }
   } else {
     toggleThemeDOM.innerText = "- Click to go to Dark Mode -";
-    bodyDOM.style.backgroundImage = "url(../images/LogoBackground.png)";
+    bodyDOM.style.backgroundImage = "url(images/LogoBackground.png)";
     bodyDOM.style.color = "black";
     // SPLASH
     imgBcg.style.border = "4px solid black";
-    imgBcg.src = "../images/VoltajeBarberStudio.png";
+    imgBcg.src = "images/VoltajeBarberStudio.png";
     textBtn.style.color = "black";
 
     // INSTRUCTIONS
@@ -247,24 +247,24 @@ const toggleTheme = () => {
     scissorImg.src = "images/ScissorsDown.png";
     warningCutImg.src = "images/warning.png";
     // GAME OVER
-    imgGameOver.src = "../images/VoltajeBarberStudio.png";
+    imgGameOver.src = "images/VoltajeBarberStudio.png";
     imgGameOver.style.borderColor = "black";
     textBtnGameover.style.color = "black";
     // BUTTONS
     toggleThemeDOM.style.color = "black";
     toggleThemeDOM.style.border = "4px solid black";
-    toggleThemeDOM.style.backgroundImage = "url(../images/LogoBackground.png)";
+    toggleThemeDOM.style.backgroundImage = "url(images/LogoBackground.png)";
     playPauseBtnDOM.style.color = "black";
     playPauseBtnDOM.style.border = "4px solid black";
-    playPauseBtnDOM.style.backgroundImage = "url(../images/LogoBackground.png)";
+    playPauseBtnDOM.style.backgroundImage = "url(images/LogoBackground.png)";
     difficultyBtnDOM.style.color = "black";
     difficultyBtnDOM.style.border = "4px solid black";
     difficultyBtnDOM.style.backgroundImage =
-      "url(../images/LogoBackground.png)";
+      "url(images/LogoBackground.png)";
     autoDifficultyBtnDOM.style.color = "black";
     autoDifficultyBtnDOM.style.border = "4px solid black";
     autoDifficultyBtnDOM.style.backgroundImage =
-      "url(../images/LogoBackground.png)";
+      "url(images/LogoBackground.png)";
     if (isGameOn === true) {
       playPauseBtnDOM.innerHTML = `- Click to Pause -<img src="images/pause.png" alt="play">`;
     } else {
