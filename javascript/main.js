@@ -95,6 +95,10 @@ const startGame = () => {
   playPauseBtnDOM.style.display = "flex"; // Show pause button
   autoDifficultyBtnDOM.style.display = "flex"; // Show auto difficulty button
   difficultyBtnDOM.style.display = "flex"; // Show difficulty button
+  toggleThemeDOM.style.display = "none"
+  playPauseBtnDOM.style.top = "80px"
+  autoDifficultyBtnDOM.style.top ="150px"
+  difficultyBtnDOM.style.top = "220px"
 
   // 2. Create game element
   gameObj = new Game();
@@ -113,10 +117,19 @@ const restartGame = () => {
   playPauseBtnDOM.style.display = "flex"; // Show pause button
   autoDifficultyBtnDOM.style.display = "flex"; // Show auto difficulty button
   difficultyBtnDOM.style.display = "flex"; // Show difficulty button
+  toggleThemeDOM.style.display = "none"
+
   // Reset DOM elements
-  life3ImageDOM.src = "images/heart.png";
-  life2ImageDOM.src = "images/heart.png";
-  life1ImageDOM.src = "images/heart.png";
+  if (isDarkMode === true){
+    life3ImageDOM.src = "images/dark/heart.png";
+    life2ImageDOM.src = "images/dark/heart.png";
+    life1ImageDOM.src = "images/dark/heart.png";
+  }else {
+    life3ImageDOM.src = "images/heart.png";
+    life2ImageDOM.src = "images/heart.png";
+    life1ImageDOM.src = "images/heart.png";
+  }
+
   scissorsScoreDOM.innerText = `0`;
   razorsScoreDOM.innerText = `0`;
   scoreDOM.innerText = `Score: 0`;

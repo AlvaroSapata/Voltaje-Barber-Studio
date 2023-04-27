@@ -2,12 +2,6 @@ class Game {
   constructor() {
     // ELEMENTS AND INITIAL VALUES OF THE GAME
 
-    /*   if ( isDarkMode === true){
-
-    } else {
-    
-    };       */
-
     // background
     this.background = new Image();
     if (isDarkMode === true) {
@@ -58,6 +52,7 @@ class Game {
       ctx.fillRect(0, 0, 4, canvas.height);
       ctx.fillRect(canvas.width - 4, 0, 4, canvas.height);
     } else {
+      ctx.fillStyle = "black"
       ctx.fillRect(0, canvas.height - 4, canvas.width, 4);
       ctx.fillRect(0, 0, canvas.width, 4);
       ctx.fillRect(0, 0, 4, canvas.height);
@@ -469,6 +464,7 @@ class Game {
     playPauseBtnDOM.style.display = "none";
     difficultyBtnDOM.style.display = "none";
     autoDifficultyBtnDOM.style.display = "none";
+    toggleThemeDOM.style.display = "flex"
 
     // 3. Show game over screen
     gameOverScreenDOM.style.display = "flex";
