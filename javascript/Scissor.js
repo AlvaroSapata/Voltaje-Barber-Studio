@@ -6,12 +6,12 @@ class Scissor {
     this.x = randomScissorsPosition; // X position
     this.w = 80; // Width
     this.h = (5 / 5) * this.w; // Height referenced to width
-    this.y = (0 - (this.h)); // Y position referenced to height
+    this.y = 0 - this.h; // Y position referenced to height
     this.canCollide = true; // Made to add the visual effect on collision
   }
 
   // METHODS OF THE SCISSORS
-  
+
   draw = () => {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   };

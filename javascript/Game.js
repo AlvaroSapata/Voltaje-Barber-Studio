@@ -30,7 +30,6 @@ class Game {
     this.razorsCounter = 0;
 
     // Checks
-    //this.isGameOn = true;
     this.randomLimit = 900;
     this.canLoseLife = true;
     this.canLoseLifeHair = true;
@@ -53,7 +52,7 @@ class Game {
   };
 
   spawnScissors = () => {
-    // when empty array / position / time
+    // when empty array / position
     let randomScissorsPosition = Math.random() * this.randomLimit;
     if (
       this.scissorsArray.length === 0 ||
@@ -65,7 +64,7 @@ class Game {
   };
 
   spawnRazors = () => {
-    // when empty array / position / time
+    // when empty array / position
     let randomRazorsPosition = Math.random() * this.randomLimit;
     if (
       this.razorArray.length === 0 ||
@@ -77,7 +76,7 @@ class Game {
   };
 
   spawnBombs = () => {
-    // when empty array / position / time
+    // when empty array / position
     let randomBombsPosition = Math.random() * this.randomLimit;
     if (
       this.bombArray.length === 0 ||
@@ -89,17 +88,17 @@ class Game {
   };
 
   spawnTrimmers = () => {
-    // when = 1 and 10 seconds since last
+    // when < 1 and 12 seconds since last
     let randomPossibility = Math.random() * 100;
     let randomTrimmersPosition = Math.random() * this.randomLimit;
+
     if (randomPossibility < 1 && this.canSpawnTrimmer === true) {
       let newtrimmer = new Trimmer(randomTrimmersPosition); // create new
       this.trimmerArray.push(newtrimmer); // add to array
       this.canSpawnTrimmer = false;
-      console.log(randomTrimmersPosition);
       setTimeout(() => {
         this.canSpawnTrimmer = true;
-      }, 10000);
+      }, 12000);
     }
   };
 
@@ -113,7 +112,7 @@ class Game {
         eachScissor.h + eachScissor.y > this.customer.y
       ) {
         if (this.isImmune === true) {
-          this.score += this.hairScore * 3;
+          this.score += this.hairScore * 3; // if imune, triple score
           const scissorAudio = new Audio("audio/scissors.wav");
           scissorAudio.volume = 0.8;
           scissorAudio.play();
@@ -122,13 +121,13 @@ class Game {
           this.canLoseLifeHair = true;
           scissorsScoreDOM.innerText = `${this.scissorsCounter}`;
           scoreDOM.innerText = `Score: ${this.score}`;
-          eachScissor.img.src = "images/ScissorsDownClosed.png";
+          eachScissor.img.src = "images/ScissorsDownClosed.png"; // animation
           eachScissor.canCollide = false;
           setTimeout(() => {
             this.scissorsArray.shift();
           }, 100);
         } else {
-          this.score += this.hairScore;
+          this.score += this.hairScore * 5;
           const scissorAudio = new Audio("audio/scissors.wav");
           scissorAudio.volume = 0.8;
           scissorAudio.play();
@@ -157,7 +156,7 @@ class Game {
         eachRazor.h + eachRazor.y > this.customer.y
       ) {
         if (this.isImmune === true) {
-          this.score += this.beardScore * 3;
+          this.score += this.beardScore * 3; // if imune, triple score
           const razorAudio = new Audio("audio/razor.wav");
           razorAudio.volume = 0.6;
           razorAudio.play();
@@ -166,13 +165,13 @@ class Game {
           this.canLoseLifeBeard = true;
           razorsScoreDOM.innerText = `${this.razorsCounter}`;
           scoreDOM.innerText = `Score: ${this.score}`;
-          eachRazor.img.src = "images/razorClosed.png";
+          eachRazor.img.src = "images/razorClosed.png"; // animation
           eachRazor.canCollide = false;
           setTimeout(() => {
             this.razorArray.shift();
           }, 100);
         } else {
-          this.score += this.beardScore;
+          this.score += this.beardScore * 7;
           const razorAudio = new Audio("audio/razor.wav");
           razorAudio.volume = 0.6;
           razorAudio.play();
@@ -201,14 +200,14 @@ class Game {
         eachBomb.h + eachBomb.y > this.customer.y
       ) {
         if (this.isImmune === true) {
+          // if immune doesnt lose life
           const bombAudio = new Audio("audio/bang.wav");
           bombAudio.volume = 0.04;
           bombAudio.play();
           this.livesCounter();
           const ouchAudio = new Audio("audio/ouch.wav");
           ouchAudio.play();
-          // visual effect
-          eachBomb.img.src = "images/explosion2.png";
+          eachBomb.img.src = "images/explosion2.png"; // animation
           eachBomb.canCollide = false;
           setTimeout(() => {
             this.bombArray.shift();
@@ -221,7 +220,6 @@ class Game {
           this.livesCounter();
           const ouchAudio = new Audio("audio/ouch.wav");
           ouchAudio.play();
-          // visual effect
           eachBomb.img.src = "images/explosion2.png";
           eachBomb.canCollide = false;
           setTimeout(() => {
@@ -242,11 +240,10 @@ class Game {
         eachTrimmer.h + eachTrimmer.y > this.customer.y
       ) {
         const trimmerAudio = new Audio("audio/trimmer.wav");
-        trimmerAudio.volume = 0.6;
+        trimmerAudio.volume = 0.7;
         trimmerAudio.play();
         this.isImmune = true;
         this.trimmerArray.shift();
-        console.log(this.isImmune);
         setTimeout(() => {
           const immunityAudio = new Audio("audio/Immune5sec.mp3");
           immunityAudio.volume = 0.6;
@@ -260,22 +257,22 @@ class Game {
   };
 
   removeScissors = () => {
-    // remove when out or when colide
+    // remove when out of canvas or when colide
     if (this.scissorsArray[0].y > canvas.height) this.scissorsArray.shift();
   };
 
   removeRazors = () => {
-    // remove when out or when colide
+    // remove when out of canvas or when colide
     if (this.razorArray[0].y > canvas.height) this.razorArray.shift();
   };
 
   removeBombs = () => {
-    // remove when out or when colide
+    // remove when out of canvas or when colide
     if (this.bombArray[0].y > canvas.height) this.bombArray.shift();
   };
 
   removeTrimmers = () => {
-    // remove when out or when colide
+    // remove when out of canvas or when colide
     if (
       this.trimmerArray.length !== 0 &&
       this.trimmerArray[0].y > canvas.height
@@ -284,10 +281,12 @@ class Game {
   };
 
   livesCounter = () => {
+    // Game over
     if (this.lives <= 0) {
       this.gameOver();
       finalScoreDOM.innerText = `- You Scored ${this.score} points -`;
     }
+    // Hearts
     if (this.lives === 3) {
       life3ImageDOM.src = "images/heart.png";
       life2ImageDOM.src = "images/heart.png";
@@ -320,6 +319,7 @@ class Game {
   };
 
   canLoseLifeChecker = () => {
+    // With this we avoid losing another half life after picking anything good
     if (this.canLoseLifeHair === true && this.canLoseLifeBeard === true) {
       this.canLoseLife = true;
     } else {
@@ -384,6 +384,7 @@ class Game {
   gameOver = () => {
     // 1. Stop the game
     isGameOn = false;
+
     // 2. Hide canvas
     canvas.style.display = "none";
     scoresScreenDOM.style.display = "none";

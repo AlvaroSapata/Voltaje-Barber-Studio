@@ -19,8 +19,8 @@ let isMuted = false;
 
 const playPauseBtnDOM = document.querySelector("#play-pause"); // Play - pause the game button
 
-const difficultyBtnDOM = document.querySelector("#difficulty-button");
-const autoDifficultyBtnDOM = document.querySelector("#auto-difficulty-button");
+const difficultyBtnDOM = document.querySelector("#difficulty-button"); // manual difficulty button
+const autoDifficultyBtnDOM = document.querySelector("#auto-difficulty-button"); // automatic difficulty button
 let isAutoIncreaseOn = false;
 
 const scissorsScoreDOM = document.querySelector(".scissors-counter"); // Number of scissors collected
@@ -38,7 +38,7 @@ const beardWarningDOM = document.querySelector(".warning-shave"); // warning ele
 
 let gravitySpeed = 3; // Falling speed
 let isGameOn = true;
-let canMoveAgain = true;
+let canMoveAgain = true; // Check
 
 let gameObj;
 
@@ -48,7 +48,7 @@ const goToInstructions = () => {
   // 1. Swap screens
   splashScreenDOM.style.display = "none"; // Hides splash
   instructionsScreenDOM.style.display = "flex"; // Shows info
-  scoresScreenDOM.style.display = "none";
+  scoresScreenDOM.style.display = "none"; // Hides scores
 };
 
 const startGame = () => {
@@ -103,17 +103,20 @@ const restartGame = () => {
 instructionsBtnDOM.addEventListener("click", goToInstructions);
 startBtnDOM.addEventListener("click", startGame);
 restartBtnDOM.addEventListener("click", restartGame);
+
 playPauseBtnDOM.addEventListener("click", () => {
+  // Pause - Resume the game
   if (isGameOn === true) {
     isGameOn = false;
     playPauseBtnDOM.innerHTML = `- Click to Resume -<img src="images/play.png" alt="play">`;
   } else {
     isGameOn = true;
     playPauseBtnDOM.innerHTML = `- Click to Pause -<img src="images/pause.png" alt="pause">`;
-    gameObj.gameLoop(); // Volver a llamar a gameLoop
+    gameObj.gameLoop(); // Call back gameLoop
   }
 });
 difficultyBtnDOM.addEventListener("click", () => {
+  // Manual difficulty increase
   if (isAutoIncreaseOn === false) {
     if (gravitySpeed === 3) {
       gravitySpeed = 4;
@@ -139,6 +142,7 @@ difficultyBtnDOM.addEventListener("click", () => {
   }
 });
 autoDifficultyBtnDOM.addEventListener("click", () => {
+  // Automatic difficulty increase
   isAutoIncreaseOn = !isAutoIncreaseOn;
   if (isAutoIncreaseOn === true) {
     autoDifficultyBtnDOM.innerHTML = `- Click to Deactivate -<br>- Auto Difficulty - <img src="images/tick.png" alt="deactivate">`;
@@ -156,7 +160,7 @@ window.addEventListener("keydown", (event) => {
     canMoveAgain === true &&
     event.code === "ArrowLeft"
   ) {
-    //gameObj.customer.moveLeft();
+    //gameObj.customer.moveLeft(); <-- this to move by "jumps"
     canMoveAgain = false;
     setTimeout(() => {
       canMoveAgain = true;
@@ -167,7 +171,7 @@ window.addEventListener("keydown", (event) => {
     canMoveAgain === true &&
     event.code === "ArrowRight"
   ) {
-    //gameObj.customer.moveRight();
+    //gameObj.customer.moveRight(); <-- this to move by "jumps"
     canMoveAgain = false;
     setTimeout(() => {
       canMoveAgain = true;
@@ -176,7 +180,8 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-// Just to test how would react on a phone
+//* Just to test how would react on a phone
+
 window.addEventListener("touchstart", (event) => {
   // Get the touch position with clientX
   const touchX = event.touches[0].clientX;
@@ -189,3 +194,13 @@ window.addEventListener("touchstart", (event) => {
     gameObj.customer.moveRightFlow2();
   }
 });
+
+let lastTouchEnd = 0;
+window.addEventListener('touchend', (event) => {
+  const now = (new Date()).getTime();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
+

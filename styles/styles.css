@@ -178,7 +178,7 @@ body {
 
 #instructions {
   position: relative;
-  top: -690px;
+  top: -670px;
 }
 
 #instructions p {
@@ -196,7 +196,8 @@ body {
 .drawings {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 35px;
 }
 .card {
   display: flex;
@@ -215,7 +216,8 @@ body {
 .hearts {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 80px;
 }
 
 .hearts img {
@@ -227,6 +229,7 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  gap: 15px;
 }
 
 .faces .face {

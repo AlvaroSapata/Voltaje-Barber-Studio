@@ -236,7 +236,11 @@ class Customer {
   growBeard = () => {
     // Each second should grow
     setInterval(() => {
-      if (this.beardCounter >= 0 && this.beardCounter < this.maxGrowLength && isGameOn === true) {
+      if (
+        this.beardCounter >= 0 &&
+        this.beardCounter < this.maxGrowLength &&
+        isGameOn === true
+      ) {
         this.beardCounter++;
       }
     }, this.growSpeed);
@@ -245,7 +249,11 @@ class Customer {
   growHair = () => {
     // Each second should grow
     setInterval(() => {
-      if (this.hairCounter >= 0 && this.hairCounter < this.maxGrowLength && isGameOn === true) {
+      if (
+        this.hairCounter >= 0 &&
+        this.hairCounter < this.maxGrowLength &&
+        isGameOn === true
+      ) {
         this.hairCounter++;
       }
     }, this.growSpeed);
