@@ -23,7 +23,7 @@ const difficultyBtnDOM = document.querySelector("#difficulty-button"); // manual
 const autoDifficultyBtnDOM = document.querySelector("#auto-difficulty-button"); // automatic difficulty button
 let isAutoIncreaseOn = false;
 
-// DARK THEME ________________________________________________________________________
+// DARK THEME ________________________________________________
 const toggleThemeDOM = document.querySelector("#toggle-themes");
 let isDarkMode = false;
 
@@ -57,6 +57,7 @@ const warningCutImg = document.querySelector(".warningCut-Icon-img");
 // GAME OVER
 const imgGameOver = document.querySelector("#img-gameover");
 const textBtnGameover = document.querySelector(".btn");
+// ___________________________________________________________
 
 const scissorsScoreDOM = document.querySelector(".scissors-counter"); // Number of scissors collected
 const razorsScoreDOM = document.querySelector(".razors-counter"); // Number of razors collected

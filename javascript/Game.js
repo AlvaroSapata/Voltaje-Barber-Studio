@@ -448,9 +448,11 @@ class Game {
     // Get the highscore from the local storage
     let highScore = localStorage.getItem("highscore");
     // Check whether the actual score is higher, and if so set it as the new highscore
-    if (actualScore > parseInt(highScore || highScore === null)) {
+    if (highScore === null || actualScore > parseInt(highScore)) {
       localStorage.setItem("highscore", actualScore.toString());
+      highScore = localStorage.getItem("highscore");
     }
+    
     highScoreDOM.innerText = `- The Highscore is: ${highScore} -`;
   };
 
