@@ -230,11 +230,8 @@ Example:
 
 # Extra Links 
 
-### Trello
-[Link](www.your-trello-url-here.com)
-
 ### Slides
-[Link](www.your-slides-url-here.com)
+[Link](https://onedrive.live.com/edit.aspx?resid=ED4CE5E87C66A465!164&ithint=file%2cpptx&ct=1682673341374&wdOrigin=OFFICECOM-WEB.START.EDGEWORTH&wdPreviousSessionSrc=HarmonyWeb&wdPreviousSession=76cb13f8-2097-4374-91cf-b342825bee7c)
 
 ## Deploy
 [Link](https://alvarosapata.github.io/Voltaje-Barber-Studio/)
